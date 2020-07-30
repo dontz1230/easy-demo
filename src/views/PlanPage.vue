@@ -29,8 +29,8 @@
 
     <!-- <PreviousNext @prevNext="prevNext(step)" :step="step" /> -->
     <div class="historyBtn">
-      <div class="historyBtn__pre" v-if="step !==0" @click="prevNext(-1)">上一步</div>
-      <div class="historyBtn__Next" v-if="step !== 7" @click="prevNext(1)">下一步</div>
+      <div class="historyBtn__pre pointer" v-if="step !==0" @click="prevNext(-1)">上一步</div>
+      <div class="historyBtn__Next pointer" v-if="step !== 7" @click="prevNext(1)">下一步</div>
     </div>
   </div>
 </template>

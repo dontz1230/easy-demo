@@ -274,6 +274,9 @@ input[type="radio"] {
     border: 4px solid #d4d4d4;
   }
 }
+input[type="radio"]:checked::before {
+  background: #66cdb6;
+}
 
 .styleBlock__text input[type="radio"] {
   top: 0 !important;

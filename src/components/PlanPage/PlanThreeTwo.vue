@@ -422,4 +422,12 @@ thead {
   background: lightgray;
   border: 3px solid lightgray;
 }
+.planTitle {
+  margin-top: 12px !important;
+  margin-bottom: 12px !important;
+}
+
+.textContainer textarea {
+  margin-bottom: 0;
+}
 </style>

@@ -173,7 +173,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 input[type="text"] {
   background: #fff;
   border: 1px solid #d4d4d4;

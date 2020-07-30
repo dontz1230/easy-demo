@@ -140,7 +140,7 @@
       <template #footer>確定送出</template>
     </TheModal>
     <div class="planHeader">
-      <div class="planHeader__title">附件</div>
+      <div class="planHeader__title" style="font-size:40px;">附件</div>
       <div class="planHeader__option">
         <img src="~@/assets/img/planList/advice.png" alt />
         <span>撰寫原則或建議</span>
@@ -204,7 +204,7 @@
       >
         <i class="fas fa-question"></i>
       </div>
-      <div class="addBtn" @click="modal = !modal">
+      <div class="addBtn" style="font-size:24px;margin-bottom: 0;" @click="modal = !modal">
         <i class="fa fa-plus"></i>
         新增物資
       </div>
@@ -385,7 +385,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .planTopic {
-  margin: 30px auto;
+  margin: 10px auto;
 }
 
 .planTitle__text {
@@ -393,7 +393,7 @@ export default {
 }
 
 .planJob {
-  margin: 20px auto;
+  margin: 10px auto;
   img {
     vertical-align: bottom;
     margin-left: 20px;

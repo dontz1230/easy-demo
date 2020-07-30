@@ -297,7 +297,8 @@
     <div>目前已上傳的圖片：</div>
     <img src="~@/assets/img/planList/demo.jpg" alt />
 
-    <div class="planJob">
+    <div class="planJob" style="    margin: 0;
+    transform: translateY(10px);">
       <div class="planTitle__text inline" style="width: fit-content;
     padding: 0 20px;">3. 其他災害</div>
       <div

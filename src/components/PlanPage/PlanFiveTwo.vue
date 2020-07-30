@@ -103,6 +103,28 @@
     <TheModal @closeModal="closeModal" v-if="modalTwo">
       <template #header>新增物資</template>
       <div class="planTitle">
+        <div class="planTitle__text">避難收容地點</div>
+        <div class="planTitle__redIcon" data-red="填寫避難收容地點的管理人或聯絡窗口。">
+          <i class="fas fa-question"></i>
+        </div>
+      </div>
+      <div class="textContainer">
+        <img v-if="pointing === 7" src="~@/assets/img/planList/point.png" />
+        <textarea
+          @focus="pointing= 7"
+          @input="descInput(items[6],items[6].content);"
+          v-model="items[6].content"
+          class
+          name
+          id
+          maxlength="500"
+        ></textarea>
+        <p
+          style="text-align:right;margin:0;font-size:14px;"
+        >{{items[6].remnant}} / {{items[6].limit}}</p>
+      </div>
+
+      <div class="planTitle">
         <div class="planTitle__text">避難收容聯絡人</div>
         <div class="planTitle__redIcon" data-red="填寫避難收容地點的管理人或聯絡窗口。">
           <i class="fas fa-question"></i>
@@ -277,7 +299,7 @@
     </div>
     <img src="~@/assets/img/planList/upload.jpg" alt />
 
-    <div class="planJob" style="display: inline-block;">
+    <div class="planJob" style="display: inline-block;    transform: translateY(10px);">
       <div class="planTitle__text inline">避難收容地點</div>
       <div
         class="planTitle__redIcon"
@@ -296,7 +318,11 @@
         <i class="fas fa-question"></i>
       </div>
     </div>
-    <div class="addBtn" style="float: right;display: inline-block;" @click="modalTwo =  !modalTwo">
+    <div
+      class="addBtn"
+      style="float: right;display: inline-block;    transform: translateY(10px);"
+      @click="modalTwo =  !modalTwo"
+    >
       <i class="fa fa-plus"></i>
       新增避難收容場所
     </div>
@@ -415,14 +441,14 @@
     <textarea class name id maxlength="500"></textarea>-->
 
     <div class="planJob">
-      <div class="planTitle__text inline">移動工具</div>
+      <div class="planTitle__text inline" style="    transform: translateY(10px);">移動工具</div>
       <div
         class="planTitle__redIcon"
         style="
     display: inline-block;
     text-align: center;
     line-height: 34px;
-    font-size: 16px;"
+    font-size: 16px;    transform: translateY(10px);"
         data-red="依據工作內容安排日間及夜間負責的應變人員。"
       >
         <i class="fas fa-question"></i>
@@ -433,7 +459,7 @@
       </div>
     </div>
 
-    <table class="blueTable">
+    <table class="blueTable" style="transform: translateY(-10px);">
       <thead>
         <tr>
           <th style="width: 23%;">避難移動工具名稱</th>
@@ -480,6 +506,7 @@ export default {
       modal: false,
       modalTwo: false,
       items: [
+        { content: "", remnant: 50, limit: 50 },
         { content: "", remnant: 50, limit: 50 },
         { content: "", remnant: 50, limit: 50 },
         { content: "", remnant: 20, limit: 20 },

@@ -2,17 +2,17 @@
   <div class="plan-section plan-section-three-four">
     <TheModal @closeModal="closeModal" v-if="modal">
       <template #header>應變工作分配</template>
+      <div class="planTitle__text inline" style="margin:24px 0;">應變階段／工作項目</div>
       <div class="twoColumn" style="width: 100%;">
         <select>
-          <option value selected>通報班</option>
-          <option value>搶救班</option>
-          <option value>救護班</option>
-          <option value>避難引導班</option>
-          <option value>安全防護班</option>
+          <option value selected>1a. 確保人員安全</option>
+          <option value>1b. 動員機構人員</option>
+          <option value>2. 收集資訊</option>
+          <option value>3. 判斷避難模式</option>
         </select>
-        <select name id>
+        <!-- <select name id>
           <option value selected>協助住民穩住重心</option>
-        </select>
+        </select>-->
       </div>
 
       <div class="planJob" style="margin-bottom: 0;">
@@ -185,7 +185,7 @@
       </div>
     </div>
 
-    <div class="planJob">
+    <div class="planJob" style="margin: 12px 0;">
       <div class="planTitle__text inline">應變工作小組內容</div>
       <div
         class="planTitle__redIcon"
@@ -193,7 +193,7 @@
     display: inline-block;
     text-align: center;
     line-height: 34px;
-    font-size: 16px;"
+    font-size: 16px;margin-bottom: 12px;"
         data-red="依據工作內容安排日間及夜間負責的應變人員。"
       >
         <i class="fas fa-question"></i>
@@ -375,7 +375,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .planTopic {
-  margin: 30px auto;
 }
 
 .planTitle__text {

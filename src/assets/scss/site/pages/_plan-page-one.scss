@@ -109,30 +109,30 @@
 
 .planTitle__greenIcon:hover {
   &::before{
-    content: attr(data-green);
-    position: absolute;
-    top: 40px;
-    width:400px;
-    left: 0;
-    background: #66cdb6;
-    color: #fff;
-    padding: 2px 10px;
-    border-radius: 8px;
-  z-index: 99;
+  //   content: attr(data-green);
+  //   position: absolute;
+  //   top: 40px;
+  //   width:400px;
+  //   left: 0;
+  //   background: #66cdb6;
+  //   color: #fff;
+  //   padding: 2px 10px;
+  //   border-radius: 8px;
+  // z-index: 99;
 }
 }
 
 .planTitle__greenIcon:hover:after{ /*實現小三角*/
-			content: "";
-			position: absolute;
-			left: 100%;
-			top: 100%;
-			margin: -10px 0 0 -8px;
-			width: 0;
-			height: 0;
-			border-width: 10px;
-			border-color: transparent transparent  #66cdb6 transparent;
-			border-style: solid;
+			// content: "";
+			// position: absolute;
+			// left: 100%;
+			// top: 100%;
+			// margin: -10px 0 0 -8px;
+			// width: 0;
+			// height: 0;
+			// border-width: 10px;
+			// border-color: transparent transparent  #66cdb6 transparent;
+			// border-style: solid;
     }
     
     .planTitle__redIcon:hover:after{ /*實現小三角*/

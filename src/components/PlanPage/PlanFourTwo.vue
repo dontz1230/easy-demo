@@ -78,7 +78,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .planTopic {
-  margin: 30px auto;
 }
 
 .teamClass {

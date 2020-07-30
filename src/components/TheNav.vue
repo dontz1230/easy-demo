@@ -39,6 +39,9 @@ export default {
 
 .nav__links {
   align-items: center;
+  a {
+    font-size: 16px;
+  }
 }
 
 .navContainer {

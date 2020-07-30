@@ -153,7 +153,7 @@
       </table>
 
       <div class="planTopic">
-        <div class="themeColor">災害潛勢地圖</div>
+        <div class="themeColor">(三)災害潛勢地圖</div>
       </div>
 
       <table class="blueTable smallTable">
@@ -166,7 +166,9 @@
         <tbody>
           <tr>
             <td>地震地震地震地震</td>
-            <td></td>
+            <td>
+              <img src="~@/assets/img/planList/demo.jpg" alt />
+            </td>
           </tr>
         </tbody>
       </table>

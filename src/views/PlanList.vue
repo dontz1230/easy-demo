@@ -149,6 +149,8 @@ export default {
 .plan-list__content {
   width: 100%;
   margin: 0;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr 1fr !important;
 }
 .modal {
   height: auto !important;

@@ -1,7 +1,7 @@
 <template>
   <div class="plan-section plan-section-three-four">
     <div class="planHeader">
-      <div class="planHeader__title" style="margin-right:20;">是教育訓練/演練</div>
+      <div class="planHeader__title" style="margin-right:20;">教育訓練/演練</div>
       <div class="planHeader__option">
         <img src="~@/assets/img/planList/advice.png" alt />
         <span>撰寫原則或建議</span>
@@ -346,7 +346,6 @@ export default {
 }
 
 .planTitle__text {
-  width: 200px;
 }
 
 .planJob {

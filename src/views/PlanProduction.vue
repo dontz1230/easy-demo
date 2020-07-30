@@ -132,7 +132,7 @@ img {
   display: inline-block;
   height: 30px;
   background: #fff;
-  border: 1px solid #efefef;
+  border: 4px solid #d9d9d9;
   text-align: center;
   line-height: 30px;
   border-radius: 50rem;
@@ -163,5 +163,9 @@ img {
     color: #fff;
     background: #469b89;
   }
+}
+
+.title {
+  font-size: 42px;
 }
 </style>

@@ -145,7 +145,7 @@
       <span v-if="!upload" style="color:#f45454!important;">使用範本</span>
       <span v-else style="color:#f45454!important;">自行上傳流程圖</span>
     </p>
-    <div class="addBtn" @click="modalTwo = !modalTwo">
+    <div class="addBtn" v-if="upload" @click="modalTwo = !modalTwo">
       <i class="fa fa-plus"></i>
       新增應變時序
     </div>
@@ -346,7 +346,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .planTopic {
-  margin: 30px auto;
 }
 
 .teamClass {
