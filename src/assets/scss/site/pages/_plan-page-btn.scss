@@ -9,7 +9,8 @@ margin: 38px auto;
     color:$planGreen;
     width:200px;
     padding:12px 0;
-    border:1px solid $planGreen;
+    border:3px solid $planGreen;
+    font-weight: bold;
     text-align: center;
     border-radius: 100px;
   }
@@ -18,4 +19,4 @@ margin: 38px auto;
   }
   &__next{
   }
-}
+} 

@@ -354,7 +354,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 label {
   padding: 0 !important;
   font-size: 1rem !important;

@@ -4,6 +4,7 @@
   
   
   .navContainer {
+    width:100%;
      max-width:1280px;
     height: 120px;
     align-items: center;
@@ -51,4 +52,16 @@ display:none;
 }
 a {
   color: #fff;
+}
+
+@media (max-width: 1280px){
+  .nav .navContainer {
+    padding: 0 5%;
+    max-width: 100%;
+}
+.nav .navContainer .nav__links{
+
+    right: 5%;
+ 
+}
 }

@@ -345,4 +345,8 @@ table.smallTable {
     left: -100px;
   }
 }
+
+td {
+  vertical-align: top;
+}
 </style>

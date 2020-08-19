@@ -204,7 +204,7 @@
       >
         <i class="fas fa-question"></i>
       </div>
-      <div class="addBtn" style="font-size:24px;margin-bottom: 0;" @click="modal = !modal">
+      <div class="addBtn" style="font-size:24px;margin-bottom: 10px;" @click="modal = !modal">
         <i class="fa fa-plus"></i>
         新增物資
       </div>

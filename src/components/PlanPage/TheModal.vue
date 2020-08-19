@@ -33,6 +33,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    group: {
+      type: Boolean,
+      default: false,
+    },
   },
   methods: {
     closeModal() {

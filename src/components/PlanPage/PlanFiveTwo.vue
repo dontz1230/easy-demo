@@ -101,7 +101,7 @@
     </TheModal>
 
     <TheModal @closeModal="closeModal" v-if="modalTwo">
-      <template #header>新增物資</template>
+      <template #header>新增避難收容場所</template>
       <div class="planTitle">
         <div class="planTitle__text">避難收容地點</div>
         <div class="planTitle__redIcon" data-red="填寫避難收容地點的管理人或聯絡窗口。">
@@ -144,6 +144,50 @@
         <p
           style="text-align:right;margin:0;font-size:14px;"
         >{{items[5].remnant}} / {{items[5].limit}}</p>
+      </div>
+
+      <div class="planTitle">
+        <div class="planTitle__text">避難收容聯絡市話</div>
+        <div class="planTitle__redIcon" data-red="填寫避難收容地點的管理人或聯絡窗口的市話。">
+          <i class="fas fa-question"></i>
+        </div>
+      </div>
+      <div class="textContainer">
+        <img v-if="pointing === 11" src="~@/assets/img/planList/point.png" />
+        <textarea
+          @focus="pointing= 11"
+          @input="descInput(items[10],items[10].content);"
+          v-model="items[10].content"
+          class
+          name
+          id
+          maxlength="500"
+        ></textarea>
+        <p
+          style="text-align:right;margin:0;font-size:14px;"
+        >{{items[10].remnant}} / {{items[10].limit}}</p>
+      </div>
+
+      <div class="planTitle">
+        <div class="planTitle__text">避難收容聯絡手機</div>
+        <div class="planTitle__redIcon" data-red="填寫避難收容地點的管理人或聯絡窗口的手機。">
+          <i class="fas fa-question"></i>
+        </div>
+      </div>
+      <div class="textContainer">
+        <img v-if="pointing === 12" src="~@/assets/img/planList/point.png" />
+        <textarea
+          @focus="pointing= 12"
+          @input="descInput(items[10],items[10].content);"
+          v-model="items[10].content"
+          class
+          name
+          id
+          maxlength="500"
+        ></textarea>
+        <p
+          style="text-align:right;margin:0;font-size:14px;"
+        >{{items[10].remnant}} / {{items[10].limit}}</p>
       </div>
 
       <div class="planTitle">
@@ -292,7 +336,8 @@
         data-red="應將避難路線或交通動線記載於機構建物平面圖、機構附近環境地圖上。
 避難路線選擇注意事項：
 1.無論是機構內部或外部移動，盡可能設定兩條以上避難路徑。
-2.事先評估異地撤離路線的災害潛勢，並建議標記路途所需時間，以作為疏散撤離時機擬定之參考。"
+2.事先評估異地撤離路線的災害潛勢，並建議標記路途所需時間，以作為疏散撤離時機擬定之參考。
+3.需標示住民位置及類型"
       >
         <i class="fas fa-question"></i>
       </div>
@@ -542,8 +587,8 @@ export default {
 
 .planTitle__text {
   width: 164px;
-  text-align: left;
-  padding-left: 20px;
+  text-align: center;
+  padding: 0;
 }
 
 .planJob {

@@ -5,7 +5,7 @@
       <div class="nav__links">
         <router-link to="/">縣市政府防災</router-link>
         <router-link to="/">長照機構防災</router-link>
-        <router-link class="login" to="/">登入</router-link>
+        <router-link class="login" to="/" style="font-size:14px;">登入</router-link>
       </div>
     </div>
   </div>

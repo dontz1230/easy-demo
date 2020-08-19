@@ -312,7 +312,20 @@
     <div class="planJob">
       <div class="planTitle__text inline">照片說明</div>
     </div>
-    <textarea class name id maxlength="500"></textarea>
+    <div class="textContainer">
+      <img v-if="pointing === 7" src="~@/assets/img/planList/point.png" />
+      <textarea
+        @focus="pointing= 7"
+        @input="descInput(items[6],items[6].content);"
+        v-model="items[6].content"
+        class
+        name
+        id
+        maxlength="500"
+      ></textarea>
+      <p style="text-align:right;margin:0;font-size:14px;">{{items[6].remnant}} / 500</p>
+    </div>
+    <p style="text-align:left;color:#777;margin-top:-20px;font-size:14px;">若有教育訓練相關之演練腳本，您可在填簽完成後，利用下載的WORD檔自行增修。</p> 
   </div>
 </template>
 <script>

@@ -7,8 +7,13 @@ module.exports = {
     config.module.rules.delete('eslint')
   },
    publicPath: process.env.NODE_ENV === 'production'
-    ? '/easy-demo15/'
+    ? '/easydemo/'
     : '/'
+
+  //  publicPath: process.env.NODE_ENV === 'production'
+  //   ? '/'
+  //    : 'http://easy2do.yummydesign.com.tw:8081/',
+
   // assetsDir: '../site_easy2do/',
   // api路徑
   // devServer: {

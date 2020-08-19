@@ -13,55 +13,52 @@
       </div>
     </div>
     <div class="planTopic">
-      <div  class="themeColor">(二)應變流程</div>
-      <div
-        class="planTitle__redIcon"
-        style="
-    display: inline-block;
-    text-align: center;
-    line-height: 34px;
-    font-size: 16px;"
-        data-red="天然災害應變流程應考慮機構本身的地理環境、設備，以及人力等實際情況進行規劃。
-可依據機構需求自行上傳流程圖，或是採用本系統提供的範本。
-目前範本上為預先設定的應變步驟，實際的災害應變流程並非一成不變，機構人員要依照現場情況調整應變步驟。"
-      >
+      <div class="themeColor">(一)應變啟動與人員召回</div>
+    </div>
+     <div class="planTitle">
+      <div class="planTitle__text">應變啟動時機</div>
+      <div class="planTitle__redIcon" data-red="應變啟動時機">
         <i class="fas fa-question"></i>
       </div>
     </div>
-    <div class="planJob">
-      <div class="planTitle__text inline">應變流程</div>
-      <div
-        class="planTitle__redIcon"
-        style="
-    display: inline-block;
-    text-align: center;
-    line-height: 34px;
-    font-size: 16px;"
-        data-red="可選擇使用範本或自行上傳：
-若使用範本，僅能修改既定流程中的文字，無法彈性增加或刪減應變時序。
-若自行上傳流程圖，較符合機構需求，但後續應變時序須自行編輯。"
-      >
+    <div class="textContainer">
+      <img v-if="pointing === 1" src="~@/assets/img/planList/point.png" />
+      <textarea
+        @focus="pointing= 1"
+        @input="descInput(items[0],items[0].content);"
+        v-model="items[0].content"
+        class
+        name
+        id
+        maxlength="500"
+      ></textarea>
+      <p style="text-align:right;margin:0;font-size:14px;">{{items[0].remnant}} / 50</p>
+    </div>
+
+    <div class="planTitle">
+      <div class="planTitle__text">人員召回機制</div>
+      <div class="planTitle__redIcon" data-red="人員召回機制">
         <i class="fas fa-question"></i>
       </div>
     </div>
 
-    <div class="teamClass">
-      <div class="styleBlock__text">
-        <input type="radio" value name="style" id @change="uploadThing" v-model="upload" />
-        <label for="style">使用範本流程圖</label>
-      </div>
-      <div class="styleBlock__text">
-        <input type="radio" value="upload" name="style" @change="uploadThing" id v-model="upload" />
-        <label for="style">自行上傳流程圖</label>
-      </div>
+    <div class="textContainer">
+      <img
+        v-if="pointing === 2"
+        src="~@/assets/img/planList/point.png"
+      />
+      <textarea
+        @focus="pointing= 2"
+        @input="descInput(items[1],items[1].content);"
+        v-model="items[1].content"
+        class
+        name
+        id
+        maxlength="500"
+      ></textarea>
+      <p style="text-align:right;margin:0;font-size:14px;">{{items[1].remnant}} / 50</p>
     </div>
-    <div class="uploadImg" v-if="upload === 'upload'">
-      <span class="greyText">上傳圖片</span>
-      <input type="file" name id />
-    </div>
-    <div class="greyText" style="margin:20px 0;">目前已上傳的圖片：</div>
-    <img v-if="eq" src="~@/assets/img/planList/process-template.jpg" alt />
-    <img style="width:600px;" src="~@/assets/img/planList/typhoon.jpg" alt />
+
   </div>
 </template>
 <script>
@@ -72,14 +69,19 @@ export default {
       default: true,
     },
   },
-  data() {
+ data() {
     return {
-      upload: false,
+      items: [
+        { content: "", remnant: 1000 },
+        { content: "", remnant: 1000 },
+      ],
+      pointing: 0,
     };
   },
   methods: {
-    uploadThing() {
-      this.$emit("uploadThing", this.upload);
+    descInput(item, text) {
+      var txtVal = text.length;
+      item.remnant = 1000 - txtVal;
     },
   },
 };

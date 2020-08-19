@@ -1,7 +1,7 @@
 <template>
   <div class="plan-section plan-section-three-four">
     <div class="planHeader">
-      <div class="planHeader__title">天然災害應變流程</div>
+      <div class="planHeader__title">地震災害應變流程</div>
       <div class="planHeader__option">
         <img src="~@/assets/img/planList/advice.png" alt />
         <span>撰寫原則或建議</span>

@@ -158,7 +158,8 @@
     </TheModal>
 
     <div class="planHeader">
-      <div class="planHeader__title">天然災害應變流程</div>
+      <div v-if="eq" class="planHeader__title">地震災害應變流程</div>
+      <div v-else class="planHeader__title">颱洪災害應變流程</div>
       <div class="planHeader__option">
         <img src="~@/assets/img/planList/advice.png" alt />
         <span>撰寫原則或建議</span>
@@ -169,7 +170,7 @@
       </div>
     </div>
     <div class="planTopic">
-      <div class="themeColor">(一)地震災害應變流程</div>
+      <div  class="themeColor">(四)應變檢核表</div>
       <div
         class="planTitle__redIcon"
         style="
@@ -184,7 +185,7 @@
         <i class="fas fa-question"></i>
       </div>
     </div>
-
+<!-- 
     <div class="planJob" style="margin: 12px 0;">
       <div class="planTitle__text inline">應變工作小組內容</div>
       <div
@@ -198,11 +199,8 @@
       >
         <i class="fas fa-question"></i>
       </div>
-      <div class="addBtn" @click="modal = !modal">
-        <i class="fa fa-plus"></i>
-        分配工作項目
-      </div>
-    </div>
+     
+    </div> -->
 
     <table class="blueTable">
       <thead>
@@ -348,6 +346,12 @@ import TheModal from "./TheModal";
 export default {
   components: {
     TheModal: TheModal,
+  },
+  props: {
+    eq: {
+      type: Boolean,
+      default: true,
+    },
   },
   data() {
     return {

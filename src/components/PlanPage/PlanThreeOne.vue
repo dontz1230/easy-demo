@@ -24,7 +24,7 @@
       </div>
       <p
         class="textDarkGrey"
-      >以下內容為直接帶入「長照機構天然災害風險檢查」系統之評估結果，如為空白表示您未曾填報過，請至 https://easy2do.ncdr.nat.gov.tw/ssa/survey 進行填答</p>
+      >以下內容為直接帶入「長照機構天然災害風險檢查」系統之評估結果，依據受災經驗與機構周遭環境初步評估風險，如為空白表示您未曾填報過，請至https://easy2do.ncdr.nat.gov.tw/ssa/survey進行填答。若上次評估時間超過三年，建議重新填報。</p>
     </div>
     <div class="threeColumn">
       <div class="textContainer">
@@ -64,11 +64,12 @@
         <img v-if="pointing === 8" src="~@/assets/img/planList/point.png" />
         <input class="greyInput" @focus="pointing= 5"  placeholder="高" type="text" />
       </div>
-      <div class="textContainer"
+      <div class="textContainer">
         <img v-if="pointing === 9" src="~@/assets/img/planList/point.png" />
         <input class="greyInput" @focus="pointing= 6"  placeholder="XXXX(不放建議)" type="text" />
       </div>
     </div>
+    <p style="text-align:right;color:#767676;">評估時間:108.08.03 15:05:20</p>
   </div>
 </template> 
 <script>

@@ -1,30 +1,41 @@
 <template>
   <div class="plan-section plan-section-three-four">
-    <TheModal @closeModal="closeModal" v-if="modalOne">
+    <TheModal @closeModal="closeModal" v-if="modalOne" :group="group">
       <template #header>修改班別名稱</template>
       <p style="margin:40px 0;">
         您選擇的班別：
-        <span style="color:#f45454;">五班</span>
+        <span v-if="group === 5" style="color:#f45454;">五班</span>
+        <span v-else style="color:#f45454;">三班</span>
       </p>
 
-      <div class="twoColumn" style="width: 100%;">
+      <div v-if="group === 5" class="twoColumn" style="width: 100%;">
         <input type="text" placeholder="通報班" name id />
         <input type="text" placeholder="搶救班" name id />
       </div>
-      <div class="twoColumn" style="width: 100%;">
+      <div v-if="group === 5" class="twoColumn" style="width: 100%;">
         <input type="text" placeholder="救護班" name id />
         <input type="text" placeholder="避難引導班" name id />
       </div>
-      <div class="twoColumn" style="width: 100%;margin-bottom: 60px;">
+      <div v-if="group === 5" class="twoColumn" style="width: 100%;margin-bottom: 60px;">
         <input type="text" placeholder="安全防護班" name id />
       </div>
+
+      <div v-if="group === 3" class="twoColumn" style="width: 100%;">
+        <input type="text" placeholder="通報班" name id />
+        <input type="text" placeholder="搶救班" name id />
+      </div>
+      <div v-if="group === 3" class="twoColumn" style="width: 100%;">
+        <input type="text" placeholder="避難引導班" name id />
+      </div>
+      <div v-if="group === 3" class="twoColumn" style="width: 100%;margin-bottom: 60px;"></div>
 
       <template #footer>確定送出</template>
     </TheModal>
 
     <TheModal @closeModal="closeModal" v-if="modalTwo">
       <template #header>新增應變工作</template>
-      <div class="planTitle" style="margin-top:40px;">
+
+      <div class="planTitle" style="margin-top:20px;">
         <div class="planTitle__text">應變階段</div>
         <div
           class="planTitle__redIcon"
@@ -101,8 +112,39 @@
       <template #footer>確定送出</template>
     </TheModal>
 
+    <TheModal @closeModal="closeModal" v-if="modalThree">
+      <template #header>新增應變時序</template>
+
+      <div class="planTitle">
+        <div class="planTitle__text">應變時序</div>
+        <div
+          class="planTitle__redIcon"
+          data-red="請詳述工作內容，確保每一位工作人員皆能明確了解工作細節，例如：1. 觀看中央氣象局網站發佈之地震速報，瞭解地震位置與震度分布。2. 以收音機或電視掌握地震造成的災情。
+撰寫過程請一併設想電力中斷、設備故障，或是其他突發狀況發生時的替代方案。"
+        >
+          <i class="fas fa-question"></i>
+        </div>
+      </div>
+      <div class="textContainer">
+        <img v-if="pointing === 3" src="~@/assets/img/planList/point.png" />
+        <textarea
+          @focus="pointing= 3"
+          placeholder="協助住民穩定重心"
+          @input="descInput(items[3],items[3].content);"
+          v-model="items[3].content"
+          class
+          name
+          id
+          maxlength="500"
+        ></textarea>
+      </div>
+
+      <template #footer>確定送出</template>
+    </TheModal>
+
     <div class="planHeader">
-      <div class="planHeader__title">天然災害應變流程</div>
+      <div v-if="eq" class="planHeader__title">地震災害應變流程</div>
+      <div v-else class="planHeader__title">颱洪災害應變流程</div>
       <div class="planHeader__option">
         <img src="~@/assets/img/planList/advice.png" alt />
         <span>撰寫原則或建議</span>
@@ -113,7 +155,7 @@
       </div>
     </div>
     <div class="planTopic">
-      <div class="themeColor">(一)地震災害應變流程</div>
+      <div class="themeColor">(三)應變工作</div>
       <div
         class="planTitle__redIcon"
         style="
@@ -139,16 +181,18 @@
       >
         <i class="fas fa-question"></i>
       </div>
+      
     </div>
     <p>
       您選擇的應變流程是：
       <span v-if="!upload" style="color:#f45454!important;">使用範本</span>
       <span v-else style="color:#f45454!important;">自行上傳流程圖</span>
     </p>
-    <div class="addBtn" v-if="upload" @click="modalTwo = !modalTwo">
-      <i class="fa fa-plus"></i>
-      新增應變時序
-    </div>
+    <div class="addBtn" v-if="upload" style="float:none;" @click="modalThree = !modalThree">
+        <i class="fa fa-plus"></i>
+        新增應變時序
+      </div>
+
     <table class="blueTable" style="width: 564px;">
       <thead>
         <tr>
@@ -196,8 +240,8 @@
       </tbody>
     </table>
 
-    <div class="planJob">
-      <div class="planTitle__text inline">應變小組班別</div>
+    <div class="planJob" style="margin-top: 20px;display: flex;">
+      <div class="planTitle__text inline" style="width:180px;">應變小組班別</div>
       <div
         class="planTitle__redIcon"
         style="
@@ -218,22 +262,27 @@
       </div>
     </div>
 
-    <div class="teamClass" style="width: 480px;">
+    <div class="teamClass" style="width: 480px;margin-top: 20px;">
       <div class="teamClass__block">
-        <span>三班</span>
+        <div class="styleBlock__text">
+          <input type="radio" name="style" id />
+          <label for="style">三班</label>
+        </div>
+        <!-- <span>三班</span>
         <input name="thre" type="checkbox" />
-        <label for="thre"></label>
-        <button style="padding: 4px 0;width: 89px;" @click="modalOne = !modalOne">修改</button>
+        <label for="thre"></label>-->
+        <button style="padding: 4px 0;width: 89px;" @click="modalOne = !modalOne;group = 3">修改</button>
       </div>
       <div class="teamClass__block">
-        <span>五班</span>
-        <input name="fiv" type="checkbox" />
-        <label for="fiv"></label>
-        <button style="padding: 4px 0;width: 89px;" @click="modalOne = !modalOne">修改</button>
+        <div class="styleBlock__text">
+          <input type="radio" name="style" id />
+          <label for="style">五班</label>
+        </div>
+        <button style="padding: 4px 0;width: 89px;" @click="modalOne = !modalOne;group = 5">修改</button>
       </div>
     </div>
 
-    <div class="planJob" style="margin-top: 57px;">
+    <div class="planJob" style="margin-top: 20px;">
       <div class="planTitle__text inline">應變工作</div>
       <div
         class="planTitle__redIcon"
@@ -315,15 +364,20 @@ export default {
   components: {
     TheModal: TheModal,
   },
+
   data() {
     return {
       modalOne: false,
       modalTwo: false,
+      modalThree: false,
       pointing: 0,
       items: [
         { content: "", remnant: 50, limit: 50 },
         { content: "", remnant: 50, limit: 500 },
+        { content: "", remnant: 50, limit: 500 },
+        { content: "", remnant: 50, limit: 500 },
       ],
+      group: 3,
     };
   },
   props: {
@@ -331,11 +385,16 @@ export default {
       type: Boolean,
       default: false,
     },
+    eq: {
+      type: Boolean,
+      default: true,
+    },
   },
   methods: {
     closeModal() {
       this.modalOne = false;
       this.modalTwo = false;
+      this.modalThree = false;
     },
     descInput(item, text) {
       var txtVal = text.length;
@@ -383,7 +442,7 @@ label {
   }
 }
 
-.planJob {
+input[type="radio"] .planJob {
   margin: 10px auto;
   img {
     vertical-align: bottom;
@@ -410,5 +469,48 @@ p {
 
 .twoColumn {
   grid-template-columns: 1fr 1fr;
+}
+
+input[type="radio"]:checked::before {
+  background: #66cdb6;
+}
+
+.styleBlock__text {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: auto;
+  color: #777;
+  input[type="radio"] {
+    display: inline-block;
+    left: unset;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border-radius: 50em;
+    -webkit-appearance: auto;
+    margin-right: 8px;
+    top: 0 !important;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 30px;
+      height: 30px;
+      border-radius: 50em;
+      border: 4px solid #d4d4d4;
+    }
+  }
+}
+
+.addBtn {
+  float: right;
+  margin-bottom: 10px;
+}
+
+select {
+  color: #858585;
 }
 </style>

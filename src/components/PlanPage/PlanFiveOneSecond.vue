@@ -113,7 +113,7 @@
     </div>
     <div class="planTopic" style="margin: 20px 0 25px 0;
     line-height: 1;">
-      <div class="themeColor">就近避難</div>
+      <div class="themeColor">垂直避難</div>
       <div
         class="planTitle__redIcon"
         style="

@@ -24,7 +24,7 @@
         </div>
       </div>
 
-      <div class="twoColumn" style="width: 100%;">
+      <div class="threeColumn" style="width: 100%;">
         <div class="textContainer">
           <img v-if="pointing === 1" src="~@/assets/img/planList/point.png" />
           <textarea
@@ -43,7 +43,7 @@
           <img v-if="pointing === 2" src="~@/assets/img/planList/point.png" />
           <textarea
             @focus="pointing= 2"
-            placeholder="應變人員姓名"
+            placeholder="應變人員職稱"
             @input="descInput(items[1],items[1].content);"
             v-model="items[1].content"
             class
@@ -52,13 +52,12 @@
             maxlength="60"
           ></textarea>
         </div>
-      </div>
-      <div class="twoColumn" style="width: 100%;">
+
         <div class="textContainer">
           <img v-if="pointing === 3" src="~@/assets/img/planList/point.png" />
           <textarea
             @focus="pointing= 3"
-            placeholder="應變人員姓名"
+            placeholder="應變人員聯絡電話"
             @input="descInput(items[2],items[2].content);"
             v-model="items[2].content"
             class
@@ -67,6 +66,9 @@
             maxlength="60"
           ></textarea>
         </div>
+      </div>
+
+      <div class="threeColumn" style="width: 100%;">
         <div class="textContainer">
           <img v-if="pointing === 4" src="~@/assets/img/planList/point.png" />
           <textarea
@@ -80,13 +82,11 @@
             maxlength="60"
           ></textarea>
         </div>
-      </div>
-      <div class="twoColumn" style="width: 100%;">
         <div class="textContainer">
           <img v-if="pointing === 5" src="~@/assets/img/planList/point.png" />
           <textarea
             @focus="pointing= 5"
-            placeholder="應變人員姓名"
+            placeholder="應變人員職稱"
             @input="descInput(items[4],items[4].content);"
             v-model="items[4].content"
             class
@@ -99,7 +99,7 @@
           <img v-if="pointing === 6" src="~@/assets/img/planList/point.png" />
           <textarea
             @focus="pointing= 6"
-            placeholder="應變人員姓名"
+            placeholder="應變人員聯絡電話"
             @input="descInput(items[5],items[5].content);"
             v-model="items[5].content"
             class
@@ -109,7 +109,10 @@
           ></textarea>
         </div>
       </div>
-      <div class="twoColumn" style="width: 100%;">
+
+
+
+      <div class="threeColumn" style="width: 100%;">
         <div class="textContainer">
           <img v-if="pointing === 7" src="~@/assets/img/planList/point.png" />
           <textarea
@@ -127,7 +130,7 @@
           <img v-if="pointing === 8" src="~@/assets/img/planList/point.png" />
           <textarea
             @focus="pointing= 8"
-            placeholder="應變人員姓名"
+            placeholder="應變人員職稱"
             @input="descInput(items[7],items[7].content);"
             v-model="items[7].content"
             class
@@ -136,13 +139,29 @@
             maxlength="60"
           ></textarea>
         </div>
+        <div class="textContainer">
+          <img v-if="pointing === 9" src="~@/assets/img/planList/point.png" />
+          <textarea
+            @focus="pointing= 9"
+            placeholder="應變人員聯絡電話"
+            @input="descInput(items[8],items[8].content);"
+            v-model="items[8].content"
+            class
+            name
+            id
+            maxlength="60"
+          ></textarea>
+        </div>
+      </div>
+      <div class="threeColumn" style="width: 100%;">
+        
       </div>
 
       <template #footer>確定送出</template>
     </TheModal>
 
     <div class="planHeader">
-      <div class="planHeader__title">天然災害應變流程</div>
+      <div class="planHeader__title">災害應變人員設定</div>
       <div class="planHeader__option">
         <img src="~@/assets/img/planList/advice.png" alt />
         <span>撰寫原則或建議</span>
@@ -153,7 +172,7 @@
       </div>
     </div>
     <div class="planTopic">
-      <div class="themeColor">應變人員資料設定</div>
+      <div class="themeColor">災害應變人員設定</div>
       <div
         class="planTitle__redIcon"
         style="
@@ -175,34 +194,39 @@
     <table class="blueTable">
       <thead>
         <tr>
-          <th>姓名</th>
-          <th style="width: 60%;">聯絡電話</th>
-          <th style="width: 10%;">修改</th>
-          <th style="width: 10%;">刪除</th>
+          <th style="width:15%">姓名</th>
+          <th style="width: 30%;">聯絡電話</th>
+          <th style="width: 30%;">職稱</th>
+          <th style="">修改</th>
+          <th style="">刪除</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>ＯＯＯ</td>
-          <td style="width: 60%;">09XX-XXX-XXX</td>
+          <td style="width: 30%;">09XX-XXX-XXX</td>
+          <td class="" style="width: 30%;">ＯＯＯＯＯＯ</td>
           <td class="underline" style="width: 10%;">修改</td>
           <td class="underline" style="width: 10%;">刪除</td>
         </tr>
         <tr>
           <td>ＯＯＯ</td>
-          <td style="width: 60%;">09XX-XXX-XXX</td>
+          <td style="width: 30%;">09XX-XXX-XXX</td>
+          <td class="" style="width: 30%;">ＯＯＯＯＯＯ</td>
           <td class="underline" style="width: 10%;">修改</td>
           <td class="underline" style="width: 10%;">刪除</td>
         </tr>
         <tr>
           <td>ＯＯＯ</td>
-          <td style="width: 60%;">09XX-XXX-XXX</td>
+          <td style="width: 30%;">09XX-XXX-XXX</td>
+          <td class="" style="width: 30%;">ＯＯＯＯＯＯ</td>
           <td class="underline" style="width: 10%;">修改</td>
           <td class="underline" style="width: 10%;">刪除</td>
         </tr>
         <tr>
           <td>ＯＯＯ</td>
-          <td style="width: 60%;">09XX-XXX-XXX</td>
+          <td style="width: 30%;">09XX-XXX-XXX</td>
+          <td class="" style="width: 30%;">ＯＯＯＯＯＯ</td>
           <td class="underline" style="width: 10%;">修改</td>
           <td class="underline" style="width: 10%;">刪除</td>
         </tr>
@@ -222,6 +246,15 @@ export default {
       pointing: 0,
       items: [
         { content: "", remnant: 60, limit: 60 },
+        { content: "", remnant: 50, limit: 50 },
+        { content: "", remnant: 50, limit: 50 },
+        { content: "", remnant: 50, limit: 50 },
+        { content: "", remnant: 50, limit: 50 },
+        { content: "", remnant: 50, limit: 50 },
+        { content: "", remnant: 50, limit: 50 },
+        { content: "", remnant: 50, limit: 50 },
+        { content: "", remnant: 50, limit: 50 },
+        { content: "", remnant: 50, limit: 50 },
         { content: "", remnant: 50, limit: 50 },
         { content: "", remnant: 50, limit: 50 },
         { content: "", remnant: 50, limit: 50 },
@@ -254,7 +287,7 @@ input {
   border: 1px solid #d4d4d4;
 }
 
-.twoColumn {
-  grid-template-columns: 1fr 1fr;
+.threeColumn {
+  grid-template-columns: 1fr 1fr 1fr;
 }
 </style>

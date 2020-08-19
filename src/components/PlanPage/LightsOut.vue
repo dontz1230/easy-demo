@@ -1,8 +1,7 @@
 <template>
   <div class="plan-section plan-section-three-four">
     <div class="planHeader">
-      <div v-if="eq" class="planHeader__title">地震災害應變流程</div>
-      <div v-else class="planHeader__title">颱洪災害應變流程</div>
+      <div class="planHeader__title">停電災害應變流程</div>
       <div class="planHeader__option">
         <img src="~@/assets/img/planList/advice.png" alt />
         <span>撰寫原則或建議</span>
@@ -10,22 +9,6 @@
       <div class="planHeader__option">
         <img src="~@/assets/img/planList/template.png" alt />
         <span>參考撰寫範本</span>
-      </div>
-    </div>
-    <div class="planTopic">
-      <div  class="themeColor">(二)應變流程</div>
-      <div
-        class="planTitle__redIcon"
-        style="
-    display: inline-block;
-    text-align: center;
-    line-height: 34px;
-    font-size: 16px;"
-        data-red="天然災害應變流程應考慮機構本身的地理環境、設備，以及人力等實際情況進行規劃。
-可依據機構需求自行上傳流程圖，或是採用本系統提供的範本。
-目前範本上為預先設定的應變步驟，實際的災害應變流程並非一成不變，機構人員要依照現場情況調整應變步驟。"
-      >
-        <i class="fas fa-question"></i>
       </div>
     </div>
     <div class="planJob">
@@ -45,23 +28,39 @@
       </div>
     </div>
 
-    <div class="teamClass">
-      <div class="styleBlock__text">
-        <input type="radio" value name="style" id @change="uploadThing" v-model="upload" />
-        <label for="style">使用範本流程圖</label>
-      </div>
-      <div class="styleBlock__text">
-        <input type="radio" value="upload" name="style" @change="uploadThing" id v-model="upload" />
-        <label for="style">自行上傳流程圖</label>
-      </div>
-    </div>
-    <div class="uploadImg" v-if="upload === 'upload'">
+    <div class="uploadImg">
       <span class="greyText">上傳圖片</span>
       <input type="file" name id />
     </div>
     <div class="greyText" style="margin:20px 0;">目前已上傳的圖片：</div>
-    <img v-if="eq" src="~@/assets/img/planList/process-template.jpg" alt />
-    <img style="width:600px;" src="~@/assets/img/planList/typhoon.jpg" alt />
+    <img src="~@/assets/img/planList/process-template.jpg" alt />
+
+    <div class="planTitle">
+      <div class="planTitle__text">應變說明</div>
+      <div class="planTitle__redIcon" data-red="思考災害管理計畫的意義與功能、對機構之效用。">
+        <i class="fas fa-question"></i>
+      </div>
+      <div
+        class="planTitle__greenIcon"
+        @click="modal = !modal"
+        data-green="本計畫旨在引導機構進行災前整備、災中應變，以及災後復原工作，使機構具備災害應變能力、降低災害衝擊、保障住民及員工之生命安全，且讓機構可持續運作。"
+      >
+        <i class="fas fa-pencil-alt"></i>
+      </div>
+    </div>
+    <div class="textContainer">
+      <img v-if="pointing === 1" src="~@/assets/img/planList/point.png" />
+      <textarea
+        @focus=" pointing= 1"
+        v-model="one"
+        @input="descInputOne"
+        class
+        name
+        id
+        maxlength="1000"
+      ></textarea>
+      <p style="text-align:right;margin:0;font-size:14px;">{{remnant}} / 10000</p>
+    </div>
   </div>
 </template>
 <script>
@@ -74,12 +73,20 @@ export default {
   },
   data() {
     return {
-      upload: false,
+      modal: false,
+      pointing: 0,
+      items: [
+        { content: "", remnant: 1000, limit: 10000 },
+      ],
     };
   },
   methods: {
-    uploadThing() {
-      this.$emit("uploadThing", this.upload);
+    closeModal() {
+      this.modal = false;
+    },
+    descInput(item, text) {
+      var txtVal = text.length;
+      item.remnant = item.limit - txtVal;
     },
   },
 };

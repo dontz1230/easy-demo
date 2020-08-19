@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="planTitle">
-      <div class="planTitle__text">計畫目的</div>
+      <div class="planTitle__text">機構名稱</div>
       <div class="planTitle__redIcon" data-red="思考災害管理計畫的意義與功能、對機構之效用。">
         <i class="fas fa-question"></i>
       </div>
@@ -97,7 +97,7 @@
 
     <div class="planTitle">
       <div class="planTitle__text">更新頻率</div>
-      <div class="planTitle__redIcon" data-red="計畫務必定期更新，建議每2年更新一次，可視需求調整，須經常更新之資料項目可放於附件，以利抽換及彙整。">
+      <div class="planTitle__redIcon" data-red="計畫務必定期更新，建議每一年更新一次，可視需求調整，須經常更新之資料項目可放於附件，以利抽換及彙整。">
         <i class="fas fa-question"></i>
       </div>
     </div>
@@ -105,7 +105,7 @@
       <img v-if="pointing === 5" src="~@/assets/img/planList/point.png" />
       <textarea
         @focus="pointing= 5"
-        placeholder="兩年一次"
+        placeholder="一年一次"
         @input="descInput(items[4],items[4].content);"
         v-model="items[4].content"
         class

@@ -45,7 +45,7 @@
       <h1>長照機構災管計畫工具</h1>
     </div>
     <div class="plan-list__content">
-      <div class="plan-block" @click="modalAdd = true">
+      <div class="plan-block pointer" @click="modalAdd = true">
         <div class="plan-block__content">
           <img src="~@/assets/img/planList/plus.png" />
           <span>建立新計畫</span>
@@ -75,7 +75,7 @@
           <span>編修日期：{{plan.createTime}}</span>
         </div>
         <div class="new-plan__footer">
-          <img src="~@/assets/img/planList/docIcon.png" alt />
+          <img style="width:auto;" src="~@/assets/img/planList/docIcon.png" alt />
           <a :href="plan.downloadLink">下載計畫書</a>
         </div>
       </div>

@@ -40,176 +40,11 @@
         </div>
       </div>
 
-      <div class="planTitle">
-        <div class="planTitle__text">災害時間</div>
-        <div class="planTitle__redIcon" data-red="災害事件時間，包含年月日，如果可以，請列出起訖時間。">
-          <i class="fas fa-question"></i>
-        </div>
-      </div>
-      <div class="textContainer">
-        <img
-          v-if="pointing === 1"
-          src="~@/assets/img/planList/point.png"
-          place-holder="新北市健康區安心里長壽路1號1~2樓"
-        />
-        <textarea
-          @focus="pointing= 1"
-          @input="descInput(items[0],items[0].content);"
-          v-model="items[0].content"
-          class
-          name
-          id
-          maxlength="500"
-        ></textarea>
-        <p
-          style="text-align:right;margin:0;font-size:14px;"
-        >{{items[0].remnant}} / {{items[0].limit}}</p>
-      </div>
+      <label for="upload" style="margin-right:20px;margin-top:36px;">上傳圖片</label>
 
-      <div class="planTitle">
-        <div class="planTitle__text">事件名稱</div>
-        <div class="planTitle__redIcon" data-red="如：蘇迪勒颱風、0823熱帶性低壓、0612豪雨等。">
-          <i class="fas fa-question"></i>
-        </div>
-        <div class="planTitle__greenIcon" data-green="0823熱帶性低氣壓水災">
-          <i class="fas fa-pencil-alt"></i>
-        </div>
-      </div>
-      <div class="textContainer">
-        <img
-          v-if="pointing === 2"
-          src="~@/assets/img/planList/point.png"
-          place-holder="新北市健康區安心里長壽路1號1~2樓"
-        />
-        <textarea
-          @focus="pointing= 2"
-          @input="descInput(items[1],items[1].content);"
-          v-model="items[1].content"
-          class
-          name
-          id
-          maxlength="500"
-        ></textarea>
-        <p
-          style="text-align:right;margin:0;font-size:14px;"
-        >{{items[1].remnant}} / {{items[1].limit}}</p>
-      </div>
-
-      <div class="planTitle">
-        <div class="planTitle__text">受災情況</div>
-        <div
-          class="planTitle__redIcon"
-          data-red="詳細描寫什麼時間點發生什麼事，如淹水深度、淹水時間、交通中斷情況、停電、撤離遭遇問題等，讓大家具體了解發生災害時，會面臨的狀況。"
-        >
-          <i class="fas fa-question"></i>
-        </div>
-        <div
-          class="planTitle__greenIcon"
-          data-green="1.機構內部從8月24晚上8點開始淹水，淹水最高深度90公分，聯外道路亦中斷，直到8月25日上午11點水退。
-2.有3位長者較晚完成撤離，造成心裡有點害怕及輕微感冒。"
-        >
-          <i class="fas fa-pencil-alt"></i>
-        </div>
-      </div>
-      <div class="textContainer">
-        <img
-          v-if="pointing === 3"
-          src="~@/assets/img/planList/point.png"
-          place-holder="新北市健康區安心里長壽路1號1~2樓"
-        />
-        <textarea
-          @focus="pointing= 3"
-          @input="descInput(items[2],items[2].content);"
-          v-model="items[2].content"
-          class
-          name
-          id
-          maxlength="500"
-        ></textarea>
-        <p
-          style="text-align:right;margin:0;font-size:14px;"
-        >{{items[2].remnant}} / {{items[2].limit}}</p>
-      </div>
-
-      <div class="planTitle">
-        <div class="planTitle__text">可能致災原因</div>
-        <div class="planTitle__redIcon" data-red="包含環境、人為因素等。">
-          <i class="fas fa-question"></i>
-        </div>
-        <div
-          class="planTitle__greenIcon"
-          data-green="1.機構位處低窪，且當日雨勢過大。
-2.晚上機構人力不足，且聯外道路淹水造成外部人員無法進入本機構，以至於將全數院民垂直撤離完畢花了太多時間，導致有長者泡到水。 "
-        >
-          <i class="fas fa-pencil-alt"></i>
-        </div>
-      </div>
-      <div>可能致災原因</div>
-      <div class="textContainer">
-        <img
-          v-if="pointing === 4"
-          src="~@/assets/img/planList/point.png"
-          place-holder="新北市健康區安心里長壽路1號1~2樓"
-        />
-        <textarea
-          @focus="pointing= 4"
-          @input="descInput(items[3],items[3].content);"
-          v-model="items[3].content"
-          class
-          name
-          id
-          maxlength="500"
-        ></textarea>
-        <p
-          style="text-align:right;margin:0;font-size:14px;"
-        >{{items[3].remnant}} / {{items[3].limit}}</p>
-      </div>
-
-      <div>致災原因是否解決</div>
-      <div class="teamClass" style="display:flex;">
-        <div style="vertical-align: top;
-    display: inline-block;" class="teamClass__block">
-          <span>未解決</span>
-          <input name="no" type="checkbox" />
-          <label for="no"></label>
-        </div>
-        <div style="vertical-align: top;
-    display: inline-block;" class="teamClass__block">
-          <span>已解決</span>
-          <input name="ys" type="checkbox" />
-          <label for="ys"></label>
-        </div>
-        <div
-          class="textContainer"
-          style="display: inline-block;
-    margin-left: 30px;
-    width: 60%;"
-        >
-          <img v-if="pointing === 5" src="~@/assets/img/planList/point.png" placeholder="填寫解決方法" />
-          <textarea
-            @focus="pointing= 5"
-            @input="descInput(items[3],items[3].content);"
-            v-model="items[3].content"
-            class
-            name
-            id
-            maxlength="500"
-          ></textarea>
-          <p
-            style="text-align:right;margin:0;font-size:14px;"
-          >{{items[3].remnant}} / {{items[3].limit}}</p>
-        </div>
-      </div>
-      <div
-        style="text-align:right;display: flex;
-    justify-content: flex-end;
-    margin: 10px 0;"
-      >
-        <div class="addBtn" @click="modal = true">
-          <i class="fa fa-plus"></i>
-          可能致災原因
-        </div>
-      </div>
+      <input type="file" id="upload" name="upload" accept="image/png, image/jpeg" />
+      <div>目前已上傳的圖片：</div>
+      <img src="~@/assets/img/planList/demo.jpg" alt />
 
       <template #footer>確定送出</template>
     </TheModal>
@@ -296,6 +131,19 @@
     <input type="file" id="upload" name="upload" accept="image/png, image/jpeg" />
     <div>目前已上傳的圖片：</div>
     <img src="~@/assets/img/planList/demo.jpg" alt />
+    <div>潛勢說明：</div>
+    <div class="textContainer">
+      <img v-if="pointing === 11" src="~@/assets/img/planList/point.png" />
+      <textarea
+        @focus="pointing = 11"
+        @blur="pointer = ''"
+        v-model="desc"
+        class
+        name
+        id
+        maxlength="500"
+      ></textarea>
+    </div>
 
     <div class="planJob" style="    margin: 0;
     transform: translateY(10px);">
@@ -367,6 +215,18 @@ export default {
       modal: false,
       pointing: 0,
       desc: "",
+      items: [
+        { content: "", remnant: 500 },
+        { content: "", remnant: 500 },
+        { content: "", remnant: 500 },
+        { content: "", remnant: 500 },
+        { content: "", remnant: 500 },
+        { content: "", remnant: 500 },
+        { content: "", remnant: 500 },
+        { content: "", remnant: 500 },
+        { content: "", remnant: 500 },
+        { content: "", remnant: 500 },
+      ],
     };
   },
   methods: {

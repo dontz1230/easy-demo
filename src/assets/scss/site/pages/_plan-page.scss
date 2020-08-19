@@ -19,9 +19,14 @@
     display: flex;
     flex-wrap: nowrap;
     width: 100%;
-    min-width: 1140px;
     max-width:1280px;
+}
 
+@media (max-width: 1280px){
+  .planContent {
+    padding: 0 5%;
+    max-width: 100%;
+}
 }
 
 .planTopic {
