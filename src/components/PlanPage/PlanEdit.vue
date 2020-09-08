@@ -33,7 +33,7 @@
     </div>
 
     <div class="planTitle">
-      <div class="planTitle__text">計劃名稱</div>
+      <div class="planTitle__text">計畫名稱</div>
       <div class="planTitle__redIcon" data-red="顯示於封面主題第2列。">
         <i class="fas fa-question"></i>
       </div>
@@ -162,8 +162,9 @@
         </div>
         <div class="uploadBlock">
           <span for="upload">上傳圖片</span>
+          <span class="text-danger">(檔案上限5MB)</span>
 
-          <input type="file" id="upload" name="upload" accept="image/png, image/jpeg" />
+          <input @change="fileHandler" type="file" id="upload" name="upload" accept="image/png, image/jpeg" />
           <div>目前已上傳的圖片：</div>
           <img src="~@/assets/img/planList/demo.jpg" alt />
           <div class="deleteBtn">刪除</div>
@@ -190,6 +191,12 @@ export default {
     descInput(item, text) {
       var txtVal = text.length;
       item.remnant = item.limit - txtVal;
+    },
+     fileHandler(element){
+       let fileSize = element.target.files[0].size;
+       if(fileSize / 1024 / 1024 >= 5) {
+         alert('檔案大小超過5MB，請壓縮或選擇其他檔案重新上傳。')
+       }
     },
   },
 };

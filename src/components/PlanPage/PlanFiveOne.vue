@@ -159,7 +159,7 @@
     </div>
 
     <div class="planJob">
-      <div class="planTitle__text inline">避難路線</div>
+      <div class="planTitle__text inline">撤離路線</div>
       <div
         class="planTitle__redIcon"
         style="

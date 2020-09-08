@@ -34,7 +34,10 @@
 
     <TheModal @closeModal="closeModal" v-if="modalTwo">
       <template #header>新增應變工作</template>
-
+      <div @click="showTemplate" class="templateBtn">
+        <img src="~@/assets/img/planList/templateBtn.png" alt />
+        <span>參考撰寫範本</span>
+      </div>
       <div class="planTitle" style="margin-top:20px;">
         <div class="planTitle__text">應變階段</div>
         <div
@@ -181,7 +184,6 @@
       >
         <i class="fas fa-question"></i>
       </div>
-      
     </div>
     <p>
       您選擇的應變流程是：
@@ -189,9 +191,9 @@
       <span v-else style="color:#f45454!important;">自行上傳流程圖</span>
     </p>
     <div class="addBtn" v-if="upload" style="float:none;" @click="modalThree = !modalThree">
-        <i class="fa fa-plus"></i>
-        新增應變時序
-      </div>
+      <i class="fa fa-plus"></i>
+      新增應變時序
+    </div>
 
     <table class="blueTable" style="width: 564px;">
       <thead>
@@ -400,6 +402,16 @@ export default {
       var txtVal = text.length;
       item.remnant = item.limit - txtVal;
     },
+    showTemplate(){
+      if(this.eq) {
+        let routeData = this.$router.resolve({ name: "EqWork" });
+      window.open(routeData.href, "_blank");
+      } else {
+        let routeData = this.$router.resolve({ name: "TyphoonWork" });
+      window.open(routeData.href, "_blank");
+      }
+       
+    }
   },
 };
 </script>
@@ -512,5 +524,20 @@ input[type="radio"]:checked::before {
 
 select {
   color: #858585;
+}
+
+.templateBtn {
+  top: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 200px;
+  position: absolute;
+  right: 20px;
+  border: 2px solid #41a48e;
+  border-radius: 100px;
+  padding: 10px 20px;
+  color: #41a48e;
 }
 </style>

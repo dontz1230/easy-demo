@@ -1,9 +1,9 @@
 <template>
   <div class="plan-section plan-section-three-four">
     <TheModal @closeModal="closeModal" v-if="modal">
-      <template #header>新增聯絡資訊</template>
+      <template #header>新增設備資訊</template>
       <div class="planTitle">
-        <div class="planTitle__text">類別</div>
+        <div class="planTitle__text">設備名稱</div>
         <div
           class="planTitle__redIcon"
           data-red="可依據外援單位的功能進行分類，例如：通報單位、救助單位、醫療單位、維生管線修復單位等，以便災時查找。"
@@ -14,7 +14,7 @@
       <textarea name id cols="30" rows="10"></textarea>
 
       <div class="planTitle">
-        <div class="planTitle__text">單位名稱</div>
+        <div class="planTitle__text">數量</div>
         <div class="planTitle__redIcon" data-red="建議填寫單位全名。">
           <i class="fas fa-question"></i>
         </div>
@@ -22,7 +22,7 @@
       <textarea name id cols="30" rows="10"></textarea>
 
       <div class="planTitle">
-        <div class="planTitle__text">聯絡人</div>
+        <div class="planTitle__text">放置地點</div>
         <div class="planTitle__redIcon" data-red="記下單位窗口姓名，方便災時聯繫。">
           <i class="fas fa-question"></i>
         </div>
@@ -30,7 +30,7 @@
       <textarea name id cols="30" rows="10"></textarea>
 
       <div class="planTitle">
-        <div class="planTitle__text">電話或其他聯絡方式</div>
+        <div class="planTitle__text">維護廠商名稱</div>
         <div class="planTitle__redIcon" data-red="除電話之外，若有傳真、line、e-mail等其他聯絡方式也一併填入。">
           <i class="fas fa-question"></i>
         </div>
@@ -38,7 +38,15 @@
       <textarea name id cols="30" rows="10"></textarea>
 
       <div class="planTitle">
-        <div class="planTitle__text">備註</div>
+        <div class="planTitle__text">維護廠商聯絡方式</div>
+        <div class="planTitle__redIcon" data-red="可填入外援單位在災時可提供之特殊協助，或是註明何者為第一優先聯絡對象。">
+          <i class="fas fa-question"></i>
+        </div>
+      </div>
+      <textarea name id cols="30" rows="10"></textarea>
+
+      <div class="planTitle">
+        <div class="planTitle__text">檢查日期</div>
         <div class="planTitle__redIcon" data-red="可填入外援單位在災時可提供之特殊協助，或是註明何者為第一優先聯絡對象。">
           <i class="fas fa-question"></i>
         </div>
@@ -60,6 +68,10 @@
     </div>
     <div class="planTopic">
       <div class="themeColor">災害應變設備</div>
+      <div @click="showTemplate" class="templateBtn">
+        <img src="~@/assets/img/planList/templateBtn.png" alt />
+        <span>參考撰寫範本</span>
+      </div>
       <div
         class="planTitle__redIcon"
         style="
@@ -89,8 +101,9 @@
           <th style="width: 15%;">設備名稱</th>
           <th style="width: 10%;">數量</th>
           <th style="width: 15%;">放置地點</th>
-          <th colspan="2" style="width: 40%;">維護廠商名稱</th>
+          <th style="width: 30%;">維護廠商名稱</th>
           <th>維護廠商聯絡方式</th>
+          <th>檢查日期</th>
         </tr>
       </thead>
       <tbody>
@@ -197,6 +210,10 @@ export default {
   methods: {
     closeModal() {
       this.modal = false;
+    },
+    showTemplate() {
+      let routeData = this.$router.resolve({ name: "FacilityTemplate" });
+      window.open(routeData.href, "_blank");
     },
   },
 };

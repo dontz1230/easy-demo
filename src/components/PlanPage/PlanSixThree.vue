@@ -60,6 +60,10 @@
     </div>
     <div class="planTopic">
       <div class="themeColor">緊急聯絡網</div>
+      <div @click="showTemplate" class="templateBtn">
+        <img src="~@/assets/img/planList/templateBtn.png" alt />
+        <span>參考撰寫範本</span>
+      </div>
       <div
         class="planTitle__redIcon"
         style="
@@ -77,7 +81,7 @@
 
     <div class="planJob">
       <div class="planTitle__text inline">聯絡資料</div>
-      <div class="addBtn"  @click="modal = !modal">
+      <div class="addBtn" @click="modal = !modal">
         <i class="fa fa-plus"></i>
         新增聯絡資訊
       </div>
@@ -111,7 +115,7 @@
           <th>ＯＯＯ</th>
           <th style="width: 20%;">02-XXXXXX</th>
           <th style="width: 18%;">第一優先聯絡</th>
-         <th class="underline">修改</th>
+          <th class="underline">修改</th>
           <th class="underline">刪除</th>
         </tr>
         <tr>
@@ -156,7 +160,7 @@
           <th>ＯＯＯ</th>
           <th style="width: 20%;">02-XXXXXX</th>
           <th style="width: 18%;"></th>
-           <th class="underline">修改</th>
+          <th class="underline">修改</th>
           <th class="underline">刪除</th>
         </tr>
         <tr>
@@ -165,7 +169,7 @@
           <th>ＯＯＯ</th>
           <th style="width: 20%;">02-XXXXXX</th>
           <th style="width: 18%;">第一優先聯絡撤離交通工具者</th>
-      <th class="underline">修改</th>
+          <th class="underline">修改</th>
           <th class="underline">刪除</th>
         </tr>
         <tr>
@@ -183,7 +187,7 @@
           <th>ＯＯＯ</th>
           <th style="width: 20%;">02-XXXXXX</th>
           <th style="width: 18%;"></th>
-         <th class="underline">修改</th>
+          <th class="underline">修改</th>
           <th class="underline">刪除</th>
         </tr>
         <tr>
@@ -201,7 +205,7 @@
           <th>ＯＯＯ</th>
           <th style="width: 20%;">02-XXXXXX</th>
           <th style="width: 18%;">洗衣設備公司</th>
-         <th class="underline">修改</th>
+          <th class="underline">修改</th>
           <th class="underline">刪除</th>
         </tr>
         <tr>
@@ -210,7 +214,7 @@
           <th>ＯＯＯ</th>
           <th style="width: 20%;">02-XXXXXX</th>
           <th style="width: 18%;">發電機設備維護廠商</th>
-           <th class="underline">修改</th>
+          <th class="underline">修改</th>
           <th class="underline">刪除</th>
         </tr>
       </tbody>
@@ -221,18 +225,22 @@
 import TheModal from "./TheModal";
 export default {
   components: {
-    TheModal: TheModal
+    TheModal: TheModal,
   },
   data() {
     return {
-      modal: false
+      modal: false,
     };
   },
   methods: {
     closeModal() {
       this.modal = false;
-    }
-  }
+    },
+    showTemplate() {
+      let routeData = this.$router.resolve({ name: "EmergencyTemplate" });
+      window.open(routeData.href, "_blank");
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -258,6 +266,6 @@ export default {
 }
 
 textarea {
-  width:100%!important;
+  width: 100% !important;
 }
 </style>

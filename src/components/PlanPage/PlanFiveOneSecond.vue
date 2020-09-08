@@ -159,6 +159,35 @@
     </div>
 
     <div class="planJob">
+      <div class="planTitle__text inline">避難收容地點</div>
+      <div
+        class="planTitle__redIcon"
+        style="
+    display: inline-block;
+    text-align: center;
+    line-height: 34px;
+    font-size: 16px;"
+        data-red="臺灣常見的天然災害為地震、水災，以及坡地災害，如有需要可自行增補其他災害類別，如海嘯、風災等。
+若不同災害類別適用同樣避難類型與相同避難收容地點，可合併填寫一份表格。"
+      >
+        <i class="fas fa-question"></i>
+      </div>
+    </div>
+    <div class="textContainer">
+      <img v-if="pointing === 6" src="~@/assets/img/planList/point.png" />
+      <textarea
+        @focus="pointing= 6"
+        @input="descInput(items[5],items[5].content);"
+        v-model="items[5].content"
+        class
+        name
+        id
+        maxlength="500"
+      ></textarea>
+      <p style="text-align:right;margin:0;font-size:14px;">{{items[5].remnant}} / {{items[5].limit}}</p>
+    </div>
+
+    <div class="planJob">
       <div class="planTitle__text inline">避難路線</div>
       <div
         class="planTitle__redIcon"
@@ -199,7 +228,7 @@
     <table class="blueTable">
       <thead>
         <tr>
-          <th style="width: 23%;">避難移動工具名稱</th>
+          <th style="width: 23%;">撤離移動工具名稱</th>
           <th>數量</th>
           <th style="width: 23%;">置放場所</th>
           <th style="width: 23%;">備註</th>
@@ -243,6 +272,7 @@ export default {
         { content: "", remnant: 50, limit: 50 },
         { content: "", remnant: 50, limit: 50 },
         { content: "", remnant: 20, limit: 20 },
+        { content: "", remnant: 500, limit: 500 },
         { content: "", remnant: 500, limit: 500 },
         { content: "", remnant: 500, limit: 500 },
       ],

@@ -1,5 +1,33 @@
 <template>
   <div class="plan-section plan-section-three-two">
+    <TheTemplate @closeModal="closeModal" v-if="modalOne" @replace="replaceFirst">
+      <template #header>參考範本</template>
+      <div class="modalContent">
+        <p style="padding: 30px 20px 0px;color:#777;font-size:1.25rem;">請選擇您要使用的範本文字</p>
+        <p
+          style="font-size: 1.25rem !important;margin: 10px 0px 10px 40px;color:#777;font-size:1.25rem;"
+        >
+          <input type="radio" v-model="oneText" :value="oneText" />
+          {{oneText}}
+        </p>
+      </div>
+      <template #footer>確定送出</template>
+    </TheTemplate>
+
+    <TheTemplate @closeModal="closeModal" v-if="modalTwo" @replace="replaceSecond">
+      <template #header>參考範本</template>
+      <div class="modalContent">
+        <p style="padding: 30px 20px 0px;color:#777;font-size:1.25rem;">請選擇您要使用的範本文字</p>
+        <p
+          style="font-size: 1.25rem !important;margin: 10px 0px 10px 40px;color:#777;font-size:1.25rem;"
+        >
+          <input type="radio" v-model="twoText" :value="twoText" />
+          {{twoText}}
+        </p>
+      </div>
+      <template #footer>確定送出</template>
+    </TheTemplate>
+
     <TheModal @closeModal="closeModal" v-if="modal">
       <template #header>新增受災經驗</template>
       <div class="planTitle">
@@ -17,28 +45,7 @@
         </div>
       </div>
 
-      <div class="teamClass" style="display: flex;">
-        <div class="teamClass__block">
-          <span>地震</span>
-          <input name="A" type="checkbox" />
-          <label for="A"></label>
-        </div>
-        <div class="teamClass__block">
-          <span>坡地災害</span>
-          <input name="B" type="checkbox" />
-          <label for="B"></label>
-        </div>
-        <div class="teamClass__block">
-          <span>水災</span>
-          <input name="C" type="checkbox" />
-          <label for="C"></label>
-        </div>
-        <div class="teamClass__block">
-          <span>其他</span>
-          <input name="D" type="checkbox" />
-          <label for="D"></label>
-        </div>
-      </div>
+      <textarea style="width: 100%;display: block;" maxlength="50"></textarea>
 
       <label for="upload" style="margin-right:20px;margin-top:36px;">上傳圖片</label>
 
@@ -60,7 +67,7 @@
       </div>
     </div>
     <div class="planTopic">
-      <div class="themeColor">(三) 受災潛勢地圖分析</div>
+      <div class="themeColor">(三) 災害潛勢地圖分析</div>
       <div
         class="planTitle__redIcon"
         style="
@@ -89,25 +96,41 @@
       >
         <i class="fas fa-question"></i>
       </div>
+      <div
+        class="planTitle__greenIcon"
+        style="display: inline-block;
+    text-align: center;"
+        @click="modalOne = !modalOne"
+      >
+        <i class="fas fa-pencil-alt"></i>
+      </div>
     </div>
 
     <label for="upload" style="margin-right:20px">上傳圖片</label>
 
-    <input type="file" id="upload" name="upload" accept="image/png, image/jpeg" />
+    <input
+      @change="fileHandler"
+      type="file"
+      id="upload"
+      name="upload"
+      accept="image/png, image/jpeg"
+    />
     <div>目前已上傳的圖片：</div>
     <img src="~@/assets/img/planList/demo.jpg" alt />
-    <div>潛勢說明：</div>
+    <div>潛勢數值資料說明：</div>
     <div class="textContainer">
       <img v-if="pointing === 10" src="~@/assets/img/planList/point.png" />
       <textarea
         @focus="pointing = 10"
         @blur="pointer = ''"
-        v-model="desc"
-        class
+        @input="descInput(item[0],item[0].content);"
+        v-model="item[0].content"
+        class="mdTxt"
         name
         id
         maxlength="500"
       ></textarea>
+      <p style="text-align:right;margin:0;font-size:14px;">{{item[0].remnant}} / {{item[0].limit}}</p>
     </div>
 
     <div class="planJob">
@@ -124,25 +147,41 @@
       >
         <i class="fas fa-question"></i>
       </div>
+      <div
+        class="planTitle__greenIcon"
+        style="display: inline-block;
+    text-align: center;"
+        @click="modalTwo = !modalTwo"
+      >
+        <i class="fas fa-pencil-alt"></i>
+      </div>
     </div>
 
     <label for="upload" style="margin-right:20px">上傳圖片</label>
 
-    <input type="file" id="upload" name="upload" accept="image/png, image/jpeg" />
+    <input
+      @change="fileHandler"
+      type="file"
+      id="upload"
+      name="upload"
+      accept="image/png, image/jpeg"
+    />
     <div>目前已上傳的圖片：</div>
     <img src="~@/assets/img/planList/demo.jpg" alt />
-    <div>潛勢說明：</div>
+    <div>潛勢數值資料說明：</div>
     <div class="textContainer">
       <img v-if="pointing === 11" src="~@/assets/img/planList/point.png" />
       <textarea
         @focus="pointing = 11"
         @blur="pointer = ''"
-        v-model="desc"
-        class
+        @input="descInput(item[1],item[1].content);"
+        v-model="item[1].content"
+        class="mdTxt"
         name
         id
         maxlength="500"
       ></textarea>
+      <p style="text-align:right;margin:0;font-size:14px;">{{item[1].remnant}} / {{item[1].limit}}</p>
     </div>
 
     <div class="planJob" style="    margin: 0;
@@ -206,9 +245,11 @@
 </template> 
 <script>
 import TheModal from "./TheModal";
+import TheTemplate from "./TheTemplate";
 export default {
   components: {
     TheModal: TheModal,
+    TheTemplate: TheTemplate,
   },
   data() {
     return {
@@ -227,11 +268,41 @@ export default {
         { content: "", remnant: 500 },
         { content: "", remnant: 500 },
       ],
+      item: [
+        { content: "", remnant: 500, limit: 500 },
+        { content: "", remnant: 500, limit: 500 },
+      ],
+      oneText: "24小時累積500毫米雨量",
+      twoText: "土石流潛勢溪流影響範圍及大規模崩塌災害潛勢地區",
+      modalOne: false,
+      modalTwo: false,
     };
   },
   methods: {
     closeModal() {
       this.modal = false;
+      this.modalOne = false;
+      this.modalTwo = false;
+    },
+    fileHandler(element) {
+      let fileSize = element.target.files[0].size;
+      if (fileSize / 1024 / 1024 >= 5) {
+        alert("檔案大小超過5MB，請壓縮或選擇其他檔案重新上傳。");
+      }
+    },
+    descInput(item, text) {
+      var txtVal = text.length;
+      item.remnant = item.limit - txtVal;
+    },
+    replaceFirst() {
+      this.item[0].content = this.oneText;
+      this.descInput(this.item[0], this.item[0].content);
+      this.modalOne = false;
+    },
+    replaceSecond() {
+      this.item[1].content = this.twoText;
+      this.descInput(this.item[1], this.item[1].content);
+      this.modalTwo = false;
     },
   },
 };

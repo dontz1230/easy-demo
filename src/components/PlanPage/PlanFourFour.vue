@@ -170,7 +170,7 @@
       </div>
     </div>
     <div class="planTopic">
-      <div  class="themeColor">(四)應變檢核表</div>
+      <div  class="themeColor">(四)應變工作指派檢核表</div>
       <div
         class="planTitle__redIcon"
         style="

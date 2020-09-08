@@ -3,7 +3,7 @@
     <TheModal @closeModal="closeModal" v-if="modal">
       <template #header>新增物資</template>
       <div class="planTitle">
-        <div class="planTitle__text">物資分類</div>
+        <div class="planTitle__text">物資類別</div>
       </div>
       <div class="textContainer">
         <img v-if="pointing === 1" src="~@/assets/img/planList/point.png" />
@@ -152,6 +152,10 @@
     </div>
     <div class="planTopic">
       <div class="themeColor">物資清單</div>
+      <div @click="showTemplate" class="templateBtn">
+        <img src="~@/assets/img/planList/templateBtn.png" alt />
+        <span>參考撰寫範本</span>
+      </div>
       <div
         class="planTitle__redIcon"
         style="
@@ -175,15 +179,7 @@
     </div>
     <div class="textContainer">
       <img v-if="pointing === 10" src="~@/assets/img/planList/point.png" />
-      <textarea
-        placeholder="2020.05.23"
-        style="width:184px;"
-        @focus="pointing= 10"
-        class
-        name
-        id
-        maxlength="50"
-      ></textarea>
+      <textarea placeholder="2020.05.23" @focus="pointing= 10" class name id maxlength="50"></textarea>
     </div>
 
     <div class="planJob">
@@ -380,6 +376,10 @@ export default {
       var txtVal = text.length;
       item.remnant = 50 - txtVal;
     },
+    showTemplate() {
+      let routeData = this.$router.resolve({ name: "FoodTemplate" });
+      window.open(routeData.href, "_blank");
+    },
   },
 };
 </script>
@@ -403,5 +403,20 @@ export default {
     display: inline-block;
     float: right;
   }
+}
+
+.templateBtn {
+  top: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 200px;
+  position: absolute;
+  right: 20px;
+  border: 2px solid #41a48e;
+  border-radius: 100px;
+  padding: 10px 20px;
+  color: #41a48e;
 }
 </style>

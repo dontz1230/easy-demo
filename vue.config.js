@@ -1,18 +1,25 @@
 module.exports = {
-  publicPath: '/',
+  // publicPath: '/test',
   css: {
     sourceMap: true
   },
   chainWebpack: config => {
     config.module.rules.delete('eslint')
   },
-   publicPath: process.env.NODE_ENV === 'production'
-    ? '/easydemo/'
-    : '/'
+  //  publicPath: process.env.NODE_ENV === 'production'
+  //   ? '/easydemo/'
+  //   : '/'
+
+   
 
   //  publicPath: process.env.NODE_ENV === 'production'
   //   ? '/'
-  //    : 'http://easy2do.yummydesign.com.tw:8081/',
+  //    : 'http://easy2donew.yummydesign.com.tw:80/test/',
+
+ publicPath: process.env.NODE_ENV === 'production'
+    ? 'http://easy2do.yummydesign.com.tw/'
+    : '/'
+
 
   // assetsDir: '../site_easy2do/',
   // api路徑

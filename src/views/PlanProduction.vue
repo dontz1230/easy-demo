@@ -2,7 +2,12 @@
   <div class="planProduction">
     <loading v-if="isLoading" />
     <h1 class="title">長照機構災管計畫產製工具</h1>
-    <swiper class="imgContainer" ref="mySwiper" :options="swiperOptions">
+    <swiper
+      class="imgContainer"
+      ref="mySwiper"
+      :options="swiperOptions"
+      @slideChange="changeSwiperIndex"
+    >
       <swiper-slide>
         <img src="../assets/img/planList/01.png" alt />
       </swiper-slide>
@@ -15,14 +20,16 @@
       <swiper-slide>
         <img src="../assets/img/planList/04.jpg" alt />
       </swiper-slide>
-       <swiper-slide>
+      <swiper-slide>
         <img src="../assets/img/planList/05.png" alt />
       </swiper-slide>
       <div class="swiper-pagination pagi" slot="pagination"></div>
       <div class="swiper-button-prev" slot="button-prev"></div>
-    <div class="swiper-button-next" slot="button-next"></div>
+      <div class="swiper-button-next" slot="button-next"></div>
     </swiper>
-    <router-link to="planlist" class="skip">跳過</router-link>
+
+    <router-link v-if="swiperIndex !== 4" to="planlist" class="skip">跳過</router-link>
+    <router-link v-else to="planlist" class="skip">開始填答</router-link>
     <!-- <div class="swiper">
       <div class="imgContainer">
         <img v-if="active === 1" src="../assets/img/planList/01.png" alt />
@@ -73,31 +80,24 @@ export default {
           clickable: true,
           type: "bullets",
         },
-         navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev'
-          }
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
       },
       active: 1,
+      swiperIndex: ''
     };
   },
   methods: {
-    changeDot(index) {
-      console.log(index);
-      this.active = index;
-    },
-    changePage(type) {
-      if (type === "prev") {
-        this.active--;
-      } else {
-        this.active++;
-      }
+    changeSwiperIndex() {
+      this.swiperIndex = this.$refs.mySwiper.$swiper.activeIndex;
     },
   },
   computed: {
     swiper() {
       return this.$refs.mySwiper.$swiper;
-    },
+    }
   },
 };
 </script>

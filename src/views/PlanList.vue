@@ -15,7 +15,7 @@
         >按下確定後，計畫書就立即刪除無法找回～</p>
         <p
           style="    margin: 30px 0 30px 20px; color:#777;   font-size: 30px !important;"
-        >您確定要刪除您的計劃書嗎？</p>
+        >您確定要刪除您的計畫書嗎？</p>
         <div class="confirmBtn modalBtn">確定</div>
         <div class="cancelBtn modalBtn" @click="closeModal">取消</div>
       </div>
@@ -29,16 +29,16 @@
       <div class="modalContent">
         <p style="padding: 30px 20px 0px 0; color:#777;font-weight:bold;">請選擇您要新增計畫的方式</p>
         <p style="font-size: 1.25rem !important;color:#777;margin: 10px 0px 10px 30px;">
-          <input type="radio" /> 使用計畫範本(空白)
+          <input type="radio" v-model="planType" value="empty" /> 使用計畫範本(空白)
         </p>
         <p style="font-size: 1.25rem !important;color:#777;margin: 10px 0px 10px 30px;">
-          <input type="radio" /> 從現有計畫中複製修改
+          <input type="radio" v-model="planType"  value="edit"/> 從現有計畫中複製修改
         </p>
         <select>
           <option>2017.11.01</option>
         </select>
       </div>
-      <template #footer>確定送出</template>
+      <template #footer><span class="pointer">確定送出</span></template>
     </TheModal>
 
     <div class="plan-list__title">
@@ -70,7 +70,7 @@
             </div>
           </div>
           <div class="plan-img">
-            <img src="~@/assets/img/planList/pdf.png" alt />
+            <img :src="plan.photo" alt />
           </div>
           <span>編修日期：{{plan.createTime}}</span>
         </div>
@@ -92,32 +92,34 @@ export default {
       isLoading: false,
       modalDelete: false,
       modalAdd: false,
+      planType: 'empty',
+      
       plans: [
         {
           year: 2020,
           photo:
-            "https://miro.medium.com/max/1088/1*ZxRo2Tzei-wZOlotb5vzSw.png",
+            require('../assets/img/planList/pdf01.jpg'),
           createTime: "2020.05.16",
           downloadLink: "https://google.com",
         },
         {
           year: 2020,
           photo:
-            "https://miro.medium.com/max/1088/1*ZxRo2Tzei-wZOlotb5vzSw.png",
+           require('../assets/img/planList/pdf02.jpg'),
           createTime: "2020.05.16",
           downloadLink: "https://google.com",
         },
         {
           year: 2020,
           photo:
-            "https://miro.medium.com/max/1088/1*ZxRo2Tzei-wZOlotb5vzSw.png",
+           require('../assets/img/planList/pdf03.jpg'),
           createTime: "2020.05.16",
           downloadLink: "https://google.com",
         },
         {
           year: 2020,
           photo:
-            "https://miro.medium.com/max/1088/1*ZxRo2Tzei-wZOlotb5vzSw.png",
+           require('../assets/img/planList/pdf01.jpg'),
           createTime: "2020.05.16",
           downloadLink: "https://google.com",
         },
@@ -165,6 +167,31 @@ export default {
 
 .modalContent {
   text-align: center;
+}
+
+.modalContent input[type="radio"] {
+  display: inline-block;
+  left: unset;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border-radius: 50em;
+  -webkit-appearance: auto;
+  margin-right: 8px;
+  top: 0 !important;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50em;
+    border: 4px solid #d4d4d4;
+  }
+  &:checked::before {
+    background: #66cdb6;
+  }
 }
 
 .modalBtn {

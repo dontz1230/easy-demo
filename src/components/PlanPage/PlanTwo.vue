@@ -1,5 +1,47 @@
 <template>
   <div class="plan-section">
+     <TheTemplate @closeModal="closeModal" v-if="modalOne" @replace="replaceFirst">
+      <template #header>參考範本</template>
+      <div class="modalContent">
+        <p style="padding: 30px 20px 0px;color:#777;font-size:1.25rem;">請選擇您要使用的範本文字</p>
+        <p
+          style="font-size: 1.25rem !important;margin: 10px 0px 10px 40px;color:#777;font-size:1.25rem;"
+        >
+          <input type="radio" v-model="oneText" :value="oneText" />
+          {{oneText}}
+        </p>
+      </div>
+      <template #footer>確定送出</template>
+    </TheTemplate>
+    <TheTemplate @closeModal="closeModal" v-if="modalTwo" @replace="replaceSecond">
+      <template #header>參考範本</template>
+      <div class="modalContent">
+        <p style="padding: 30px 20px 0px;color:#777;font-size:1.25rem;">請選擇您要使用的範本文字</p>
+        <p
+          style="font-size: 1.25rem !important;margin: 10px 0px 10px 40px;color:#777;font-size:1.25rem;"
+        >
+          <input type="radio" v-model="twoText" :value="twoText" />
+          {{twoText}}
+        </p>
+      </div>
+      <template #footer>確定送出</template>
+    </TheTemplate>
+
+    <TheTemplate @closeModal="closeModal" v-if="modalThree" @replace="replaceThird">
+      <template #header>參考範本</template>
+      <div class="modalContent">
+        <p style="padding: 30px 20px 0px;color:#777;font-size:1.25rem;">請選擇您要使用的範本文字</p>
+        <p
+          style="font-size: 1.25rem !important;margin: 10px 0px 10px 40px;color:#777;font-size:1.25rem;"
+        >
+          <input type="radio" v-model="threeText" :value="threeText" />
+          {{threeText}}
+        </p>
+      </div>
+      <template #footer>確定送出</template>
+    </TheTemplate>
+
+
     <div class="planHeader">
       <div class="planHeader__title">機構基本資料</div>
       <div class="planHeader__option">
@@ -16,6 +58,9 @@
       <div class="planTitle__redIcon" data-red="向政府登記之全名。">
         <i class="fas fa-question"></i>
       </div>
+      <div class="planTitle__greenIcon" @click="modalOne = !modalOne">
+        <i class="fas fa-pencil-alt"></i>
+      </div>
     </div>
     <div class="textContainer">
       <img v-if="pointing === 1" src="~@/assets/img/planList/point.png" />
@@ -28,13 +73,16 @@
         id
         maxlength="500"
       ></textarea>
-      <p style="text-align:right;margin:0;font-size:14px;">{{items[0].remnant}} / 50</p>
+      <p style="text-align:right;margin:0;font-size:14px;">{{items[0].remnant}} / {{items[0].limit}}</p>
     </div>
 
     <div class="planTitle">
       <div class="planTitle__text">機構地址</div>
       <div class="planTitle__redIcon" data-red="機構完整地址包含村里。">
         <i class="fas fa-question"></i>
+      </div>
+      <div class="planTitle__greenIcon" @click="modalTwo = !modalTwo">
+        <i class="fas fa-pencil-alt"></i>
       </div>
     </div>
 
@@ -53,7 +101,7 @@
         id
         maxlength="500"
       ></textarea>
-      <p style="text-align:right;margin:0;font-size:14px;">{{items[1].remnant}} / 50</p>
+      <p style="text-align:right;margin:0;font-size:14px;">{{items[1].remnant}} / {{items[0].limit}}</p>
     </div>
 
     <div class="planTitle">
@@ -117,6 +165,10 @@
         data-red="註明不同類型（如老人福利機構為長照、養護、失智，以及安養；身心障礙福利機構為成人日間照顧、全日型、早療日間照顧、夜間型住宿等）的核定床位數或是服務量。"
       >
         <i class="fas fa-question"></i>
+        
+      </div>
+       <div class="planTitle__greenIcon" @click="modalThree = !modalThree">
+        <i class="fas fa-pencil-alt"></i>
       </div>
     </div>
     <div class="textContainer">
@@ -125,12 +177,12 @@
         @focus="pointing= 3"
         @input="descInput(items[2],items[2].content);"
         v-model="items[2].content"
-        class
+        class="mdTxt"
         name
         id
         maxlength="500"
       ></textarea>
-      <p style="text-align:right;margin:0;font-size:14px;">{{items[2].remnant}} / 50</p>
+      <p style="text-align:right;margin:0;font-size:14px;">{{items[2].remnant}} / {{items[2].limit}}</p>
     </div>
 
     <div class="planTitle">
@@ -155,20 +207,44 @@
 </template> 
 <script>
 export default {
+   components: {
+    TheTemplate:()=> import('./TheTemplate'),
+  },
   data() {
     return {
       items: [
-        { content: "", remnant: 50 },
-        { content: "", remnant: 50 },
-        { content: "", remnant: 50 },
+        { content: "", remnant: 60, limit: 60 },
+        { content: "", remnant: 50, limit: 50 },
+        { content: "", remnant: 100, limit: 100 },
       ],
       pointing: 0,
+      oneText:'平安是福老人長期照顧中心(養護型) ',
+twoText:'新北市健康區安心里長壽路1號1~2樓',
+threeText:'養護30床 安養15床',
+   modalOne: false,
+      modalTwo: false,
+      modalThree: false,
     };
   },
   methods: {
     descInput(item, text) {
       var txtVal = text.length;
-      item.remnant = 50 - txtVal;
+      item.remnant = item.limit - txtVal;
+    },
+    replaceFirst() {
+      this.items[0].content = this.oneText;
+      this.descInput(this.items[0], this.items[0].content);
+      this.modalOne = false;
+    },
+    replaceSecond() {
+      this.items[1].content = this.twoText;
+      this.descInput(this.items[1], this.items[1].content);
+      this.modalTwo = false;
+    },
+    replaceThird() {
+      this.items[2].content = this.threeText;
+      this.descInput(this.items[2], this.items[2].content);
+      this.modalThree = false;
     },
   },
 };

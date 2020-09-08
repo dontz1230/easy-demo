@@ -101,7 +101,7 @@
     </TheModal>
 
     <TheModal @closeModal="closeModal" v-if="modalTwo">
-      <template #header>新增避難收容場所</template>
+      <template #header>新增避難收容地點</template>
       <div class="planTitle">
         <div class="planTitle__text">避難收容地點</div>
         <div class="planTitle__redIcon" data-red="填寫避難收容地點的管理人或聯絡窗口。">
@@ -125,7 +125,7 @@
       </div>
 
       <div class="planTitle">
-        <div class="planTitle__text">避難收容聯絡人</div>
+        <div class="planTitle__text">聯絡人</div>
         <div class="planTitle__redIcon" data-red="填寫避難收容地點的管理人或聯絡窗口。">
           <i class="fas fa-question"></i>
         </div>
@@ -147,7 +147,7 @@
       </div>
 
       <div class="planTitle">
-        <div class="planTitle__text">避難收容聯絡市話</div>
+        <div class="planTitle__text">避難收容地點聯絡市話</div>
         <div class="planTitle__redIcon" data-red="填寫避難收容地點的管理人或聯絡窗口的市話。">
           <i class="fas fa-question"></i>
         </div>
@@ -169,7 +169,7 @@
       </div>
 
       <div class="planTitle">
-        <div class="planTitle__text">避難收容聯絡手機</div>
+        <div class="planTitle__text">避難收容地點聯絡手機</div>
         <div class="planTitle__redIcon" data-red="填寫避難收容地點的管理人或聯絡窗口的手機。">
           <i class="fas fa-question"></i>
         </div>
@@ -191,7 +191,7 @@
       </div>
 
       <div class="planTitle">
-        <div class="planTitle__text">避難收容地址</div>
+        <div class="planTitle__text">避難收容地點地址</div>
         <div class="planTitle__redIcon" data-red="避難收容地點的完整地址。">
           <i class="fas fa-question"></i>
         </div>
@@ -324,27 +324,7 @@
     </div>
     <textarea class name id maxlength="500" style="margin: 0;"></textarea>
 
-    <div class="planJob" style="    margin: 0 0 10px 0;">
-      <div class="planTitle__text inline" style="text-align: center;padding:0;">避難路線</div>
-      <div
-        class="planTitle__redIcon"
-        style="
-    display: inline-block;
-    text-align: center;
-    line-height: 34px;
-    font-size: 16px;"
-        data-red="應將避難路線或交通動線記載於機構建物平面圖、機構附近環境地圖上。
-避難路線選擇注意事項：
-1.無論是機構內部或外部移動，盡可能設定兩條以上避難路徑。
-2.事先評估異地撤離路線的災害潛勢，並建議標記路途所需時間，以作為疏散撤離時機擬定之參考。
-3.需標示住民位置及類型"
-      >
-        <i class="fas fa-question"></i>
-      </div>
-    </div>
-    <img src="~@/assets/img/planList/upload.jpg" alt />
-
-    <div class="planJob" style="display: inline-block;    transform: translateY(10px);">
+      <div class="planJob" style="display: inline-block;    transform: translateY(10px);">
       <div class="planTitle__text inline">避難收容地點</div>
       <div
         class="planTitle__redIcon"
@@ -369,7 +349,7 @@
       @click="modalTwo =  !modalTwo"
     >
       <i class="fa fa-plus"></i>
-      新增避難收容場所
+      新增避難收容地點
     </div>
 
     <table class="blueTable" style>
@@ -383,8 +363,12 @@
             避難收容
             <br />聯絡人
           </th>
-          <th style="width: 20%;">避難收容地址</th>
-          <th style="width: 20%;">可安置人數</th>
+          <th style="width: 12%;">市話</th>
+          <th style="width: 12%;">手機</th>
+          <th style="width: %;">避難收容
+            <br />地址</th>
+          <th style="width: 8%;">可安置
+             <br />人數</th>
           <th style="width: 12%;">隨行員工</th>
           <th style="width: 12%;">備註</th>
           <th>修改</th>
@@ -393,6 +377,8 @@
       </thead>
       <tbody>
         <tr>
+          <td></td>
+          <td></td>
           <td></td>
           <td></td>
           <td></td>
@@ -409,11 +395,35 @@
           <td></td>
           <td></td>
           <td></td>
+          <td></td>
+          <td></td>
           <td class="underline">修改</td>
           <td class="underline">刪除</td>
         </tr>
       </tbody>
     </table>
+
+    <div class="planJob" style="    margin: 20px 0 10px 0;">
+      <div class="planTitle__text inline" style="text-align: center;padding:0;">避難路線</div>
+      <div
+        class="planTitle__redIcon"
+        style="
+    display: inline-block;
+    text-align: center;
+    line-height: 34px;
+    font-size: 16px;"
+        data-red="應將避難路線或交通動線記載於機構建物平面圖、機構附近環境地圖上。
+        避難路線選擇注意事項：
+        1.無論是機構內部或外部移動，盡可能設定兩條以上避難路徑。
+        2.事先評估異地撤離路線的災害潛勢，並建議標記路途所需時間，以作為疏散撤離時機擬定之參考。
+        3.需標示住民位置及類型"
+      >
+        <i class="fas fa-question"></i>
+      </div>
+    </div>
+    <img src="~@/assets/img/planList/upload.jpg" alt />
+
+  
 
     <!-- <div class="planJob">
       <div class="planTitle__text inline">避難收容聯絡人</div>

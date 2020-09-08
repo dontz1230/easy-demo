@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="planTopic">
-      <div  class="themeColor">(二)應變流程</div>
+      <div class="themeColor">(二)應變流程</div>
       <div
         class="planTitle__redIcon"
         style="
@@ -24,22 +24,6 @@
         data-red="天然災害應變流程應考慮機構本身的地理環境、設備，以及人力等實際情況進行規劃。
 可依據機構需求自行上傳流程圖，或是採用本系統提供的範本。
 目前範本上為預先設定的應變步驟，實際的災害應變流程並非一成不變，機構人員要依照現場情況調整應變步驟。"
-      >
-        <i class="fas fa-question"></i>
-      </div>
-    </div>
-    <div class="planJob">
-      <div class="planTitle__text inline">應變流程</div>
-      <div
-        class="planTitle__redIcon"
-        style="
-    display: inline-block;
-    text-align: center;
-    line-height: 34px;
-    font-size: 16px;"
-        data-red="可選擇使用範本或自行上傳：
-若使用範本，僅能修改既定流程中的文字，無法彈性增加或刪減應變時序。
-若自行上傳流程圖，較符合機構需求，但後續應變時序須自行編輯。"
       >
         <i class="fas fa-question"></i>
       </div>
@@ -57,11 +41,11 @@
     </div>
     <div class="uploadImg" v-if="upload === 'upload'">
       <span class="greyText">上傳圖片</span>
-      <input type="file" name id />
+      <input @change="fileHandler" type="file" name id />
     </div>
     <div class="greyText" style="margin:20px 0;">目前已上傳的圖片：</div>
     <img v-if="eq" src="~@/assets/img/planList/process-template.jpg" alt />
-    <img style="width:600px;" src="~@/assets/img/planList/typhoon.jpg" alt />
+    <img v-else style="width:600px;" src="~@/assets/img/planList/typhoon.jpg" alt />
   </div>
 </template>
 <script>
@@ -80,6 +64,12 @@ export default {
   methods: {
     uploadThing() {
       this.$emit("uploadThing", this.upload);
+    },
+    fileHandler(element) {
+      let fileSize = element.target.files[0].size;
+      if (fileSize / 1024 / 1024 >= 5) {
+        alert("檔案大小超過5MB，請壓縮或選擇其他檔案重新上傳。");
+      }
     },
   },
 };

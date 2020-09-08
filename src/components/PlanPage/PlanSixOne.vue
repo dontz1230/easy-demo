@@ -1,5 +1,101 @@
 <template>
   <div class="plan-section plan-section-three-four">
+    <TheTemplate @closeModal="closeModal" v-if="modalOne" @replace="replaceFirst">
+      <template #header>參考範本</template>
+      <div class="modalContent">
+        <p style="padding: 30px 20px 0px;color:#777;font-size:1.25rem;">請選擇您要使用的範本文字</p>
+        <p
+          style="font-size: 1.25rem !important;margin: 10px 0px 10px 40px;color:#777;font-size:1.25rem;"
+        >
+          <input type="radio" v-model="oneText" :value="oneText" />
+          {{oneText}}
+        </p>
+      </div>
+      <template #footer>確定送出</template>
+    </TheTemplate>
+
+    <TheTemplate @closeModal="closeModal" v-if="modalTwo" @replace="replaceSecond">
+      <template #header>參考範本</template>
+      <div class="modalContent">
+        <p style="padding: 30px 20px 0px;color:#777;font-size:1.25rem;">請選擇您要使用的範本文字</p>
+        <p
+          style="font-size: 1.25rem !important;margin: 10px 0px 10px 40px;color:#777;font-size:1.25rem;"
+        >
+          <input type="radio" v-model="twoText" :value="twoText" />
+          {{twoText}}
+        </p>
+      </div>
+      <template #footer>確定送出</template>
+    </TheTemplate>
+
+    <TheTemplate @closeModal="closeModal" v-if="modalThree" @replace="replaceThird">
+      <template #header>參考範本</template>
+      <div class="modalContent">
+        <p style="padding: 30px 20px 0px;color:#777;font-size:1.25rem;">請選擇您要使用的範本文字</p>
+        <p
+          style="font-size: 1.25rem !important;margin: 10px 0px 10px 40px;color:#777;font-size:1.25rem;"
+        >
+          <input type="radio" v-model="threeText" :value="threeText" />
+          {{threeText}}
+        </p>
+      </div>
+      <template #footer>確定送出</template>
+    </TheTemplate>
+    <TheTemplate @closeModal="closeModal" v-if="modalFour" @replace="replaceFour">
+      <template #header>參考範本</template>
+      <div class="modalContent">
+        <p style="padding: 30px 20px 0px;color:#777;font-size:1.25rem;">請選擇您要使用的範本文字</p>
+        <p
+          style="font-size: 1.25rem !important;margin: 10px 0px 10px 40px;color:#777;font-size:1.25rem;"
+        >
+          <input type="radio" v-model="fourText" :value="fourText" />
+          {{fourText}}
+        </p>
+      </div>
+      <template #footer>確定送出</template>
+    </TheTemplate>
+    <TheTemplate @closeModal="closeModal" v-if="modalFive" @replace="replaceFive">
+      <template #header>參考範本</template>
+      <div class="modalContent">
+        <p style="padding: 30px 20px 0px;color:#777;font-size:1.25rem;">請選擇您要使用的範本文字</p>
+        <p
+          style="font-size: 1.25rem !important;margin: 10px 0px 10px 40px;color:#777;font-size:1.25rem;"
+        >
+          <input type="radio" v-model="fourText" :value="fourText" />
+          {{fourText}}
+        </p>
+      </div>
+      <template #footer>確定送出</template>
+    </TheTemplate>
+
+    <TheTemplate @closeModal="closeModal" v-if="modalSix" @replace="replaceSix">
+      <template #header>參考範本</template>
+      <div class="modalContent">
+        <p style="padding: 30px 20px 0px;color:#777;font-size:1.25rem;">請選擇您要使用的範本文字</p>
+        <p
+          style="font-size: 1.25rem !important;margin: 10px 0px 10px 40px;color:#777;font-size:1.25rem;"
+        >
+          <input type="radio" v-model="sixText" :value="sixText" />
+          {{sixText}}
+        </p>
+      </div>
+      <template #footer>確定送出</template>
+    </TheTemplate>
+
+    <TheTemplate @closeModal="closeModal" v-if="modalSeven" @replace="replaceSeven">
+      <template #header>參考範本</template>
+      <div class="modalContent">
+        <p style="padding: 30px 20px 0px;color:#777;font-size:1.25rem;">請選擇您要使用的範本文字</p>
+        <p
+          style="font-size: 1.25rem !important;margin: 10px 0px 10px 40px;color:#777;font-size:1.25rem;"
+        >
+          <input type="radio" v-model="sevenText" :value="sevenText" />
+          {{sevenText}}
+        </p>
+      </div>
+      <template #footer>確定送出</template>
+    </TheTemplate>
+
     <div class="planHeader">
       <div class="planHeader__title" style="margin-right:20;">教育訓練/演練</div>
       <div class="planHeader__option">
@@ -32,9 +128,7 @@
     text-align: center;
     line-height: 34px;
     font-size: 16px;"
-        data-green="(1) 災害管理課程
-(2) 急救訓練
-(3) 應變組織作業"
+        @click="modalOne = !modalOne"
       >
         <i class="fas fa-pencil-alt"></i>
       </div>
@@ -73,9 +167,7 @@
     text-align: center;
     line-height: 34px;
     font-size: 16px;"
-        data-green="(1) 新進員工、外籍員工
-(2) 所有員工
-(3) 所有員工"
+        @click="modalTwo = !modalTwo"
       >
         <i class="fas fa-pencil-alt"></i>
       </div>
@@ -114,9 +206,7 @@
     text-align: center;
     line-height: 34px;
     font-size: 16px;"
-        data-green="(1) 新進員工報到後兩個月內
-(2) 半年一次
-(3) 一年一次"
+        @click="modalThree = !modalThree"
       >
         <i class="fas fa-pencil-alt"></i>
       </div>
@@ -156,7 +246,7 @@
     text-align: center;
     line-height: 34px;
     font-size: 16px;"
-        data-green="夜間水災垂直疏散"
+        @click="modalFour = !modalFour"
       >
         <i class="fas fa-pencil-alt"></i>
       </div>
@@ -195,7 +285,7 @@
     text-align: center;
     line-height: 34px;
     font-size: 16px;"
-        data-green="本計畫旨在引導機構進行災前整備、災中應變，以及災後復原工作，使機構具備災害應變能力、降低災害衝擊、保障住民及員工之生命安全，且讓機構可持續運作。"
+        @click="modalFive = !modalFive"
       >
         <i class="fas fa-pencil-alt"></i>
       </div>
@@ -234,7 +324,7 @@
     text-align: center;
     line-height: 34px;
     font-size: 16px;"
-        data-green="夜間值班員工"
+        @click="modalSix = !modalSix"
       >
         <i class="fas fa-pencil-alt"></i>
       </div>
@@ -273,7 +363,7 @@
     text-align: center;
     line-height: 34px;
     font-size: 16px;"
-        data-green="2020.06.30演練發現院民疏散撤離耗費時間較預期的多，檢討之後，將行動不便者的房間改至靠近樓梯處。有修訂計畫，修正各班別在疏散撤離時的工作內容，並重新安排人力。"
+        @click="modalSeven = !modalSeven"
       >
         <i class="fas fa-pencil-alt"></i>
       </div>
@@ -325,31 +415,98 @@
       ></textarea>
       <p style="text-align:right;margin:0;font-size:14px;">{{items[6].remnant}} / 500</p>
     </div>
-    <p style="text-align:left;color:#777;margin-top:-20px;font-size:14px;">若有教育訓練相關之演練腳本，您可在填簽完成後，利用下載的WORD檔自行增修。</p> 
+    <p
+      style="text-align:left;color:#777;margin-top:-20px;font-size:14px;"
+    >若有演練腳本，您可在此系統填答完成後，利用下載的Word檔自行增補腳本至附件。。</p>
   </div>
 </template>
 <script>
+import TheTemplate from "./TheTemplate";
 export default {
+  components: {
+    TheTemplate: TheTemplate,
+  },
   data() {
     return {
       modal: false,
       items: [
-        { content: "", remnant: 500 },
-        { content: "", remnant: 500 },
-        { content: "", remnant: 500 },
-        { content: "", remnant: 500 },
-        { content: "", remnant: 500 },
-        { content: "", remnant: 500 },
-        { content: "", remnant: 500 },
+        { content: "", remnant: 500, limit: 500 },
+        { content: "", remnant: 500, limit: 500 },
+        { content: "", remnant: 500, limit: 500 },
+        { content: "", remnant: 500, limit: 500 },
+        { content: "", remnant: 500, limit: 500 },
+        { content: "", remnant: 500, limit: 500 },
+        { content: "", remnant: 500, limit: 500 },
       ],
       pointing: 0,
+      modalOne: false,
+      modalTwo: false,
+      oneText: "(1) 災害管理課程 (2) 急救訓練 (3) 應變組織作業",
+      twoText: "(1) 新進員工、外籍員工(2) 所有員工(3) 所有員工",
+      threeText:"(1) 新進員工報到後兩個月內(2) 半年一次 (3) 一年一次",
+      fourText: "夜間水災垂直疏散",
+      fiveText: "夜間水災垂直疏散",
+      sixText: "半年一次",
+      sevenText: "2020.06.30演練發現院民／住民疏散撤離耗費時間較預期的多，檢討之後，將行動不便者的房間改至靠近樓梯處。有修訂計畫，修正各班別在疏散撤離時的工作內容，並重新安排人力。",
+      modalThree: false,
+      modalFour: false,
+      modalFive: false,
+      modalSix: false,
+      modalSeven: false,
     };
   },
   methods: {
     descInput(item, text) {
       var txtVal = text.length;
-      item.remnant = 500 - txtVal;
+      item.remnant = item.limit - txtVal;
     },
+     closeModal() {
+      console.log("close");
+      this.modal = false;
+      this.modalOne = false;
+      this.modalTwo = false;
+      this.modalThree = false;
+      this.modalFour = false;
+      this.modalFive = false;
+      this.modalSix = false;
+      this.modalSeven = false;
+    },
+     replaceFirst() {
+      this.items[0].content = this.oneText;
+      this.descInput(this.items[0], this.items[0].content);
+      this.modalOne = false;
+    },
+    replaceSecond() {
+      this.items[1].content = this.twoText;
+      this.descInput(this.items[1], this.items[1].content);
+      this.modalTwo = false;
+    },
+    replaceThird() {
+      this.items[2].content = this.threeText;
+      this.descInput(this.items[2], this.items[2].content);
+      this.modalThree = false;
+    },
+    replaceFour() {
+      this.items[3].content = this.fourText;
+      this.descInput(this.items[3], this.items[3].content);
+      this.modalFour = false;
+    },
+    replaceFive() {
+      this.items[4].content = this.fiveText;
+      this.descInput(this.items[4], this.items[4].content);
+      this.modalFive = false;
+    },
+    replaceSix() {
+      this.items[5].content = this.sixText;
+      this.descInput(this.items[5], this.items[5].content);
+      this.modalSix = false;
+    },
+    replaceSeven() {
+      this.items[6].content = this.sevenText;
+      this.descInput(this.items[6], this.items[6].content);
+      this.modalSeven = false;
+    },
+
   },
 };
 </script>

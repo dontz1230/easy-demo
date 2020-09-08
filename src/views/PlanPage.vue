@@ -38,10 +38,11 @@
       <PlanFourFour :eq="true" v-if="step===11" />
 
       <!-- 第五章台虹 -->
-      <EarthStart :eq="true" v-if="step===12" />
-      <PlanFourTwo :eq="false" @uploadThing="uploadThing" v-if="step ===14 || step ===13" />
-      <PlanFourThree :eq="false" :upload="upload" v-if="step ===15" />
-      <PlanFourFour :eq="false" v-if="step ===16" />
+      <EarthStart :eq="false" v-if="step===12" />
+      <PlanFourTwo :eq="false" @uploadThing="uploadThing" v-if="step ===13" />
+      <PlanFourThree :eq="false" :upload="upload" v-if="step ===14" />
+      <PlanFourFour :eq="false" v-if="step ===15 || step ===16" />
+      <!-- <PlanFourFour :eq="false" v-if="step ===16" /> -->
       <!-- <PlanFourFive v-if="step===11" /> -->
 
       <!-- 六 停電 -->
@@ -110,10 +111,10 @@ export default {
     },
     prevNext(type) {
       console.log(type);
-      if (type == +1 && this.step === 10) {
-        this.step = 12;
-      } else if (type == -1 && this.step === 12) {
-        this.step = 10;
+      if (type == +1 && this.step === 15) {
+        this.step = 17;
+      }  else if (type == -1 && this.step === 17) {
+        this.step = 15;
       } else if (type == -1) {
         this.step = this.step - 1;
       } else if (type == +1) {

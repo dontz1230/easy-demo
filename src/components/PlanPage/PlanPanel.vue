@@ -9,10 +9,10 @@
       <template #header>提醒</template>
       <div class="modalContent">
         <p
-          style="padding: 30px 20px 0 20px;  color:#777;  font-size: 16px !important;"
+          style="padding:0;  color:#777; font-size:20px !important"
         >匯出Word檔後如需手動增減計畫內容，</p>
         <p
-          style="margin: 30px 0 30px 20px; color:#777;   font-size: 16px !important;"
+          style="margin: 0 0 16px 0 ; color:#777;  font-size:20px !important"
         >請記得更改目錄及頁碼。</p>
         <div class="confirmBtn modalBtn" @click="closeModal">確定</div>
         <div class="cancelBtn modalBtn" @click="closeModal">取消</div>
@@ -32,10 +32,10 @@
             <span class="_font--warning">29:46</span>
           </span>
         </div>
-        <div class="panelContainer__right--logout">
+        <!-- <div class="panelContainer__right--logout">
           <i class="fas fa-sign-out-alt"></i>
           <span>登出</span>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

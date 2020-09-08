@@ -8,8 +8,8 @@
       <div
         @click="changeStep(item.page)"
         class="stepList__dot pointer"
-        :class="{'activeDot' : item.page === pageStep, 'ad1' : item.index ===  '三.' && pageStep ===3 ,'ad2' : item.index ===  '三.' && pageStep ===4,'ad3' : item.index ===  '三.' && pageStep ===5,'ad4' : item.index ===  '三.' && pageStep ===6,'ad5' : item.index ===  '四.' && pageStep ===8,'ad6' : item.index ===  '四.' && pageStep ===9,'ad7' : item.index ===  '四.' && pageStep ===10,'ad8' : item.index ===  '四.' && pageStep ===11,'ad9' : item.index ===  '五.' && pageStep ===15,'activeDot' : item.index ===  '七.' && pageStep ===20,'activeDot' : item.index ===  '八.' && pageStep ===21,'activeDot' : item.index ===  '六.', 'activeDot' : item.page === pageStep,'activeDot' : item.index ===  '七.' && pageStep ===19,'ad11' : item.index ===  '七.' && pageStep ===20,'ad12' : item.index ===  '八.' && pageStep ===21,'ad13' : item.index ===  '六.' &&pageStep ===18,'ad14' : item.index ===  '五.' &&pageStep ===12,'ad15' : item.index ===  '五.' &&pageStep ===13
-        ,'ad16' : item.index ===  '三.' &&pageStep ===7, 'ad17' : item.index ===  '五.' &&pageStep === 14,'active-2' : item.page ===  2 &&pageStep ===2,'active-1' : item.index ===  '一.' &&pageStep ===1,'active-15' :item.index ==='六.' && pageStep === 17,'ac1' :item.index ==='七.' && pageStep === 18,'ac2' :item.index ==='七.' && pageStep === 19,'ac3' :item.index ==='七.' && pageStep === 20,'ac4' :item.index ==='九.' && pageStep === 22,'ac5' :item.index ==='九.' && pageStep === 23,'ac6' :item.index ==='九.' && pageStep === 24}"
+        :class="{'activeDot' : item.page === pageStep, 'ad1' : item.index ===  '三.' && pageStep ===3 ,'ad2' : item.index ===  '三.' && pageStep ===4,'ad3' : item.index ===  '三.' && pageStep ===5,'ad4' : item.index ===  '三.' && pageStep ===6,'ad5' : item.index ===  '四.' && pageStep ===8,'ad6' : item.index ===  '四.' && pageStep ===9,'ad7' : item.index ===  '四.' && pageStep ===10,'ad8' : item.index ===  '四.' && pageStep ===11,'ad9' : item.index ===  '五.' && pageStep ===15,'activeDot' : item.index ===  '七.' && pageStep ===20,'activeDot' : item.index ===  '八.' && pageStep ===21,'activeDot' : item.index ===  '六.', 'activeDot' : item.page === pageStep,'activeDot' : item.index ===  '七.' && pageStep ===19,'ad11' : item.index ===  '七.' && pageStep ===20,'ad12' : item.index ===  '八.' && pageStep ===21,'ad13' : item.index ===  '六.' &&pageStep ===17,'ad14' : item.index ===  '五.' &&pageStep ===12,'ad15' : item.index ===  '五.' &&pageStep ===13
+        ,'ad16' : item.index ===  '' &&pageStep ===7, 'ad17' : item.index ===  '五.' &&pageStep === 14,'active-2' : item.page ===  2 &&pageStep ===2,'active-1' : item.index ===  '一.' &&pageStep ===1,'active-15' :item.index ==='六.' && pageStep === 17,'ac1' :item.index ==='七.' && pageStep === 18,'ac2' :item.index ==='七.' && pageStep === 19,'ac3' :item.index ==='七.' && pageStep === 20,'ac4' :item.index ==='九.' && pageStep === 22,'ac5' :item.index ==='九.' && pageStep === 23,'ac6' :item.index ==='九.' && pageStep === 24}"
       ></div>
       <div
         class="stepList__index pointer"
@@ -17,7 +17,7 @@
       >{{item.index}}</div>
       <div
         class="stepList__title"
-        :class="{'active' : pageStep===item.page && pageStep !==3 &&pageStep!==8 &&pageStep!==9 &&pageStep!==10 &&pageStep!==11 &&pageStep!==12&&pageStep!==13&&pageStep!==14&&pageStep!==15}"
+        :class="{'active' : pageStep===item.page && pageStep !==3 &&pageStep!==8 &&pageStep!==9 &&pageStep!==10 &&pageStep!==11 &&pageStep!==12&&pageStep!==13&&pageStep!==14&&pageStep!==15, 'activeSeven' :  item.index ==='' }"
       >
         <span
           @click="changeStep(item.page)"
@@ -26,13 +26,13 @@
         >{{item.title}}</span>
         <div v-if="item.index === '三.'" class="subTitle pointer">
           <ul
-            v-if="pageStep ===3 || pageStep ===4 || pageStep ===5  ||pageStep ===6 ||pageStep ===7 "
+            v-if="pageStep ===3 || pageStep ===4 || pageStep ===5  ||pageStep ===6 "
           >
             <li
               :class="{'active' : pageStep===3}"
               class="pointer"
               @click="changeStep(3)"
-            >(一)天然災害風險檢查結果</li>
+            >(一)天然災害風險檢查系統初評結果</li>
             <li :class="{'active' : pageStep===4}" class="pointer" @click="changeStep(4)">(二)受災經驗</li>
             <li
               :class="{'active' : pageStep===5}"
@@ -40,11 +40,11 @@
               @click="changeStep(5)"
             >(三)災害潛勢地圖分析</li>
             <li :class="{'active' : pageStep===6}" class="pointer" @click="changeStep(6)">(四)綜合研判結果</li>
-            <li
+            <!-- <li
               :class="{'active' : pageStep===7}"
               class="pointer infoSetting"
               @click="changeStep(7)"
-            >應變人員資料設定</li>
+            >應變人員資料設定</li> -->
           </ul>
         </div>
         <div v-if="item.index === '四.'" class="subTitle pointer">
@@ -60,7 +60,7 @@
                 <span @click="changeStep(10)" class="pointer">(三)應變工作</span>
               </div>
               <div :class="{'active' : pageStep===11}" class="pointer">
-                <span @click="changeStep(11)" class="pointer">(四)應變檢核表</span>
+                <span @click="changeStep(11)" class="pointer">(四)應變工作指派檢核表</span>
               </div>
               <!-- <ul
                 v-if="pageStep===8 || pageStep===9 || pageStep ===10"
@@ -136,7 +136,7 @@
               <span v-if=" pageStep ===19" class="activeCircle"></span> 垂直避難
             </li>
             <li @click="changeStep(20)" class="pointer">
-              <span v-if=" pageStep ===20" class="activeCircle"></span> 異地避難
+              <span v-if=" pageStep ===20" class="activeCircle"></span> 異地撤離
             </li>
           </ul>
         </div>
@@ -177,7 +177,7 @@
             class="subTitleContainer"
           >
             <li>
-              <span></span> 加入其它附件，
+              <span></span>欲加入其他附件
             </li>
             <li>可自行利用匯出</li>
             <li>
@@ -214,6 +214,11 @@ export default {
           index: "三.",
           page: 3,
           title: "災害風險評估",
+        },
+        {
+          index: "",
+          page: 7,
+          title: "災害應變人員設定",
         },
         {
           index: "四.",
