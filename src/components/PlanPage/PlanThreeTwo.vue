@@ -432,7 +432,7 @@ export default {
   },
   methods: {
     closeModal() {
-      console.log("close");
+      // console.log("close");
       this.modal = false;
       this.modalOne = false;
       this.modalTwo = false;
